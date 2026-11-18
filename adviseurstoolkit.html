@@ -41,6 +41,14 @@ nav button{background:transparent;color:#c9d6e6;border:0;border-radius:8px 8px 0
 nav button[aria-selected="true"]{background:var(--bg);color:var(--navy)}
 main{max-width:1180px;margin:0 auto;padding:20px 16px 60px}
 .tab{display:none}.tab.on{display:block}
+.offer{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:center;background:#fff;border:2px solid #C00000;border-radius:12px;padding:18px 22px;margin-bottom:16px;color:#222}
+.offer h3{margin:0 0 6px;font-size:21px;color:#17365D}
+.offer ul{margin:6px 0 0;padding-left:20px}.offer li{margin-bottom:3px}
+.price{background:#17365D;color:#fff;border-radius:10px;padding:14px 16px;text-align:center}
+.price .pm{font-size:34px;font-weight:700;line-height:1.1}.price .pm small{font-size:16px;font-weight:400}
+.price .once{font-size:16px;color:#d7e3f1;margin:4px 0 10px}
+.price a{display:block;margin-top:6px}
+@media (max-width:760px){.offer{grid-template-columns:1fr}}
 .mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .mat{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--navy);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column}
 .mat.c{border-top-color:#C00000}.mat.g{border-top-color:var(--green)}.mat.o{border-top-color:var(--orange)}
@@ -171,6 +179,16 @@ a.b:hover,button.b:hover{filter:brightness(1.12)}
     </ol>
   </div>
 
+  <div class="offer">
+    <div><h3>Het complete Actiefbeheerscan-toolpakket</h3>
+      <p style="margin:0;color:#5f6670">Deze hypotheekscan als slim formulier, klaar voor gebruik.</p>
+      <ul><li>Zet het formulier <b>op je website</b></li><li>Gebruik het in je <b>mailing of nieuwsbrief</b></li><li>Je ziet <b>direct alle resultaten</b> en weet wie je moet bellen</li></ul>
+    </div>
+    <div class="price"><div class="pm">€ 79,- <small>per maand</small></div><div class="once">+ eenmalig € 495,-</div>
+      <a class="b" href="https://formulier.actiefbeheerscan.nl/s/wD106O1z7GoYW1zn" target="_blank" rel="noopener" style="background:#C00000;border-color:#C00000">Bekijk het voorbeeld</a>
+      <a class="b alt" href="mailto:dennes.roes@blinqx.tech?subject=Actiefbeheerscan-toolpakket" style="color:#fff;border-color:#fff">Toolpakket afnemen</a></div>
+  </div>
+
   <div class="lbl">Voor je klanten · marketing</div>
   <div class="mgrid">
     <div class="mat c"><h3>LinkedIn-campagne</h3><p>7 posts in 4 weken, inclusief een poll, met beelden als PNG met je eigen logo (vierkant, liggend of staand).</p><div class="row"><button class="b" data-go="t2" type="button">Open</button></div></div>
@@ -178,7 +196,7 @@ a.b:hover,button.b:hover{filter:brightness(1.12)}
     <div class="mat c"><h3>Klanttekst "Hypotheek vanaf 52 jaar"</h3><p>Webpagina met veelgestelde vragen voor je website. Kopieer als tekst of HTML, of print als PDF.</p><div class="row"><button class="b" data-go="t4" type="button">Open</button></div></div>
     <div class="mat g"><h3>Stappenscan 52+ en jaarlijkse update</h3><p>Opzet zoals de Actiefbeheerscan (11 stappen, met vervolgvragen en signalen), inclusief de vraag "pensioen telt eerder mee". Of de korte update met 5 kernvragen voor je hele portefeuille. Te versturen als e-mail, vragenlijst of print-formulier.</p><div class="row"><button class="b" data-go="t3" data-mode="scan" type="button">Open</button></div></div>
     <div class="mat g"><h3>Nazorgscan hypotheken</h3><p>22 vragen in 8 rubrieken voor de doelgroep 50–57 en klanten met signalen. Vragen zelf aan te vinken.</p><div class="row"><button class="b" data-go="t3" data-mode="lang" type="button">Open</button></div></div>
-    <div class="mat g"><h3>Blinqx Actiefbeheerscan</h3><p>Slim formulier dat de klant zelf invult. De antwoorden komen gestructureerd terug, zodat je kunt selecteren en prioriteren. Voor Blinqx-gebruikers komt er een training van een dagdeel.</p><div class="row"><a class="b" href="https://actiefbeheerscan.nl" target="_blank" rel="noopener">Website</a><a class="b alt" href="https://formulier.actiefbeheerscan.nl/s/PzSDxcFYAsLw6jCq" target="_blank" rel="noopener">Voorbeeld</a></div></div>
+    <div class="mat g"><h3>Blinqx Actiefbeheerscan</h3><p>Slim formulier dat de klant zelf invult. De antwoorden komen gestructureerd terug, zodat je kunt selecteren en prioriteren. Voor Blinqx-gebruikers komt er een training van een dagdeel. Toolpakket: € 79,- per maand + eenmalig € 495,-.</p><div class="row"><a class="b" href="https://actiefbeheerscan.nl" target="_blank" rel="noopener">Website</a><a class="b alt" href="https://formulier.actiefbeheerscan.nl/s/wD106O1z7GoYW1zn" target="_blank" rel="noopener">Voorbeeld</a></div></div>
     <div class="mat o"><h3>Gesprekshulp "Hypotheek straks"</h3><p>NVHP-tool voor de klant: kan ik straks nog doorstromen of mijn hypotheek verlengen? Een verkenning, geen advies.</p><div class="row"><a class="b" href="https://jeroen-o.github.io/Kan-ik-straks-nog-doorstromen-of-mijn-hypotheek-verlengen-/index.html" target="_blank" rel="noopener">Open tool</a></div></div>
     <div class="mat o"><h3>Klantlinks</h3><p>Voor in je mails en gesprekken: eigen AOW-datum (SVB) en pensioenopbouw (mijnpensioenoverzicht.nl).</p><div class="row"><a class="b" href="https://www.svb.nl" target="_blank" rel="noopener">svb.nl</a><a class="b alt" href="https://www.mijnpensioenoverzicht.nl" target="_blank" rel="noopener">Pensioen</a></div></div>
     <div class="mat o"><h3>DFO standaarddocumenten</h3><p>Klanttekst onderhoud en nazorg, OTD-paragraaf, brief over abonnement, mail bij wezenlijke wijziging, machtiging incasso. Via DFO BV; compliancevragen via DFO Compliance.</p><div class="row"><a class="b" href="mailto:info@dfobv.nl">DFO BV</a><a class="b alt" href="mailto:info@dfocompliance.nl">DFO Compliance</a></div></div>
@@ -280,6 +298,15 @@ a.b:hover,button.b:hover{filter:brightness(1.12)}
 <!-- ============ TAB 3 ============ -->
 <section class="tab" id="t3">
   <div class="card">
+    <div class="offer">
+    <div><h3>Het complete Actiefbeheerscan-toolpakket</h3>
+      <p style="margin:0;color:#5f6670">De stappenscan 52+ hieronder als slim formulier, klaar voor gebruik.</p>
+      <ul><li>Zet het formulier <b>op je website</b></li><li>Gebruik het in je <b>mailing of nieuwsbrief</b></li><li>Je ziet <b>direct alle resultaten</b> en weet wie je moet bellen</li></ul>
+    </div>
+    <div class="price"><div class="pm">€ 79,- <small>per maand</small></div><div class="once">+ eenmalig € 495,-</div>
+      <a class="b" href="https://formulier.actiefbeheerscan.nl/s/wD106O1z7GoYW1zn" target="_blank" rel="noopener" style="background:#C00000;border-color:#C00000">Bekijk het voorbeeld</a>
+      <a class="b alt" href="mailto:dennes.roes@blinqx.tech?subject=Actiefbeheerscan-toolpakket" style="color:#fff;border-color:#fff">Toolpakket afnemen</a></div>
+  </div>
     <h2>Klantvragen: jaarlijkse informatie-update en nazorgscan hypotheken</h2>
     <p class="muted">Gebruik de <b>jaarlijkse update</b> (5 kernvragen) voor je hele portefeuille, en de <b>nazorgscan</b> (uitgebreid) voor de eerste doelgroep van 50 tot en met 57 jaar en voor klanten met signalen. Vink aan wat je wilt meesturen.</p>
     <div class="row" style="margin:12px 0">
@@ -680,7 +707,7 @@ function renderCal(){
   document.getElementById('cal').innerHTML=h;
 }
 sd.addEventListener('input',renderCal);
-var DEMO={kantoor:'Dennes Roes',adviseur:'Dennes Roes',functie:'Directeur Hypotheekadvies',url:'dennes-roes.nl',tel:'06 51 11 78 93',email:'dennes.roes@blinqx.tech',scan:'',afm:'',kifid:'',kosten:'',kleur:'#17365D',logo:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgNTYwIDE2MCI+CjxyZWN0IHg9IjYiIHk9IjIwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgcng9IjIyIiBmaWxsPSIjMTczNjVEIi8+CjxwYXRoIGQ9Ik0zMCAxMTIgTDY2IDUwIEwxMDIgMTEyIFoiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSI1OCIgeT0iODgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyNCIgZmlsbD0iI0MwMDAwMCIvPgo8dGV4dCB4PSIxNDgiIHk9Ijc4IiBmb250LWZhbWlseT0iQ2FsaWJyaSwgQ2FybGl0bywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxNzM2NUQiIGxldHRlci1zcGFjaW5nPSIyIj5ERU5ORVMgUk9FUzwvdGV4dD4KPHRleHQgeD0iMTUwIiB5PSIxMTgiIGZvbnQtZmFtaWx5PSJDYWxpYnJpLCBDYXJsaXRvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZmlsbD0iIzVmNjY3MCIgbGV0dGVyLXNwYWNpbmc9IjEiPmh5cG90aGVla2FkdmllczwvdGV4dD4KPHJlY3QgeD0iNDAwIiB5PSI5NiIgd2lkdGg9IjExMCIgaGVpZ2h0PSIzNCIgcng9IjgiIGZpbGw9IiNDMDAwMDAiLz4KPHRleHQgeD0iNDU1IiB5PSIxMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJDYWxpYnJpLCBDYXJsaXRvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9IjMiPkRFTU88L3RleHQ+Cjwvc3ZnPg=='};
+var DEMO={kantoor:'Dennes Roes',adviseur:'Dennes Roes',functie:'Directeur Hypotheekadvies',url:'dennes-roes.nl',tel:'06 51 11 78 93',email:'dennes.roes@blinqx.tech',scan:'https://formulier.actiefbeheerscan.nl/s/wD106O1z7GoYW1zn',afm:'',kifid:'',kosten:'',kleur:'#17365D',logo:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgNTYwIDE2MCI+CjxyZWN0IHg9IjYiIHk9IjIwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgcng9IjIyIiBmaWxsPSIjMTczNjVEIi8+CjxwYXRoIGQ9Ik0zMCAxMTIgTDY2IDUwIEwxMDIgMTEyIFoiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSI1OCIgeT0iODgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyNCIgZmlsbD0iI0MwMDAwMCIvPgo8dGV4dCB4PSIxNDgiIHk9Ijc4IiBmb250LWZhbWlseT0iQ2FsaWJyaSwgQ2FybGl0bywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxNzM2NUQiIGxldHRlci1zcGFjaW5nPSIyIj5ERU5ORVMgUk9FUzwvdGV4dD4KPHRleHQgeD0iMTUwIiB5PSIxMTgiIGZvbnQtZmFtaWx5PSJDYWxpYnJpLCBDYXJsaXRvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZmlsbD0iIzVmNjY3MCIgbGV0dGVyLXNwYWNpbmc9IjEiPmh5cG90aGVla2FkdmllczwvdGV4dD4KPHJlY3QgeD0iNDAwIiB5PSI5NiIgd2lkdGg9IjExMCIgaGVpZ2h0PSIzNCIgcng9IjgiIGZpbGw9IiNDMDAwMDAiLz4KPHRleHQgeD0iNDU1IiB5PSIxMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJDYWxpYnJpLCBDYXJsaXRvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9IjMiPkRFTU88L3RleHQ+Cjwvc3ZnPg=='};
 function applyState(o){Object.keys(S).forEach(function(k){S[k]=(o&&typeof o[k]==='string')?o[k]:(k==='kleur'?'#17365D':'')});
   document.querySelectorAll('[data-k]').forEach(function(el){el.value=S[el.dataset.k]||(el.type==='color'?'#17365D':'')});
   document.getElementById('f_logo').value='';setLogo(S.logo);}

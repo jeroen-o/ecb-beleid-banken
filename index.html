@@ -76,6 +76,14 @@ footer{color:var(--mute);font-size:14px;padding:28px 0 40px}
 .prev{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
 .prev img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
 @media (max-width:760px){.share,.prev{grid-template-columns:1fr}}
+.offer{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:18px;align-items:center;background:#fff;border:2px solid #C00000;border-radius:14px;padding:20px 24px;margin-top:22px}
+.offer h4{margin:0 0 6px;font-size:22px;color:#17365D}
+.offer ul{margin:8px 0 0;padding-left:20px}.offer li::marker{color:#C00000}
+.price{background:#17365D;color:#fff;border-radius:10px;padding:16px;text-align:center}
+.price .pm{font-size:36px;font-weight:700;line-height:1.1}.price .pm small{font-size:17px;font-weight:400}
+.price .once{color:#d7e3f1;margin:4px 0 12px}
+.price a{display:block;margin-top:8px;border-radius:8px;padding:10px 14px;font-weight:700;text-decoration:none}
+@media (max-width:760px){.offer{grid-template-columns:1fr}}
 @media (max-width:900px){.quick{grid-template-columns:repeat(2,minmax(0,1fr))}.spk{grid-template-columns:90px 1fr}.spk .logos{grid-column:1/-1}.spk img.f{width:90px;height:90px}}
 @media (max-width:700px){h1{font-size:32px}.hero p.lead{font-size:17px}.hero .wrap{padding:28px 16px 40px}.main{grid-template-columns:1fr}.big{padding:20px}.big h2{font-size:24px}.ev{grid-template-columns:1fr}}
 @media (max-width:420px){.quick{grid-template-columns:1fr}}
@@ -106,10 +114,19 @@ footer{color:var(--mute);font-size:14px;padding:28px 0 40px}
     </a>
   </div>
 
+  <div class="offer">
+    <div><p class="kick" style="color:#C00000;margin:0 0 6px">Actiefbeheerscan</p><h4>Neem het complete Actiefbeheerscan-toolpakket af</h4>
+      <p style="margin:0;color:var(--mute)">De hypotheekscan 52+ als slim formulier dat je klant zelf invult.</p>
+      <ul><li>Zet het formulier op je website</li><li>Gebruik het in je mailing of nieuwsbrief</li><li>Je ziet direct alle resultaten</li></ul></div>
+    <div class="price"><div class="pm">€ 79,- <small>per maand</small></div><div class="once">+ eenmalig € 495,-</div>
+      <a href="https://formulier.actiefbeheerscan.nl/s/wD106O1z7GoYW1zn" target="_blank" rel="noopener" style="background:#C00000;color:#fff">Bekijk het voorbeeld</a>
+      <a href="mailto:dennes.roes@blinqx.tech?subject=Actiefbeheerscan-toolpakket" style="border:1px solid #fff;color:#fff">Toolpakket afnemen</a></div>
+  </div>
+
   <h3>Direct naar</h3>
   <div class="quick">
     <a class="q" href="adviseurstoolkit.html#linkedin"><b>LinkedIn-campagne</b><span>Posts en beelden</span></a>
-    <a class="q" href="adviseurstoolkit.html#klantvragen"><b>Klantvragen</b><span>Jaarlijkse update en nazorgscan</span></a>
+    <a class="q" href="adviseurstoolkit.html#klantvragen"><b>Hypotheekscan 52+</b><span>Vragen, signalen en formulier</span></a>
     <a class="q" href="adviseurstoolkit.html#klanttekst"><b>Klanttekst 52+</b><span>Voor je website</span></a>
     <a class="q" href="adviseurstoolkit.html#nieuwsbrief"><b>Nieuwsbrief</b><span>3 versies</span></a>
     <a class="q" href="adviseurstoolkit.html#overzicht"><b>Alle materialen</b><span>Kalender en checklist</span></a>
