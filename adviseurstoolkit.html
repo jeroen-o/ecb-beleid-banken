@@ -164,7 +164,7 @@ a.b:hover,button.b:hover{filter:brightness(1.12)}
     <h2>Alle marketing- en klantmaterialen op één plek</h2>
     <p class="muted">Voor de aanpak van je eerste doelgroep, klanten van 50 tot en met 57 jaar. Begin bij stap 1; daarna zijn alle materialen gevuld met je eigen logo en gegevens.</p>
     <ol class="steps" style="margin-top:10px">
-      <li><b>Vul je kantoorgegevens in</b> (logo, naam, URL, telefoon, e-mail). <a href="#gegevens" data-go="t1">Naar kantoorgegevens →</a></li>
+      <li><b>Vul je kantoorgegevens in</b> (logo, naam, URL, telefoon, e-mail). Nu staan er demogegevens van Dennes Roes in. <span class="row" style="display:inline-flex;margin-left:6px"><button class="b red" data-nieuw type="button" style="font-size:13.5px;padding:6px 12px">＋ Nieuw kantoor invullen</button><a class="b alt" href="#gegevens" data-go="t1" style="font-size:13.5px;padding:6px 12px">Bekijk gegevens</a></span></li>
       <li><b>Kies je materialen</b> hieronder: LinkedIn, nieuwsbrief, klanttekst, nazorgscan</li>
       <li><b>Laat je compliance officer meekijken</b> en loop de checklist onderaan door</li>
       <li><b>Plan je campagne</b> met de kalender en leg alle verzendingen vast in je dossier</li>
@@ -224,6 +224,7 @@ a.b:hover,button.b:hover{filter:brightness(1.12)}
 <!-- ============ TAB 1 ============ -->
 <section class="tab" id="t1">
   <div class="card">
+    <div id="demoBar" class="ok" style="margin-bottom:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap"><span style="flex:1;min-width:220px"><b>Demo:</b> de toolkit is gevuld met voorbeeldgegevens van Dennes Roes en een demologo. Vervang ze door je eigen gegevens, of begin leeg.</span><button class="b red" id="demoClear" type="button">＋ Nieuw kantoor invullen</button></div>
     <h2>Jouw kantoorgegevens</h2>
     <p class="muted">Vul je gegevens één keer in. Ze worden automatisch verwerkt in de LinkedIn-posts, de beelden, de klantvragen en de klanttekst.</p>
     <div class="grid" style="margin-top:12px">
@@ -394,8 +395,9 @@ function renderVK(){
 }
 
 /* ---------- tab 2: posts ---------- */
+function sameKA(){return S.kantoor&&S.adviseur&&S.kantoor.trim().toLowerCase()===S.adviseur.trim().toLowerCase()}
 function sig(){
-  return '\n\n'+v('adviseur','naam adviseur')+(S.functie?' | '+S.functie:'')+' | '+v('kantoor','kantoornaam')+
+  return '\n\n'+v('adviseur','naam adviseur')+(S.functie?' | '+S.functie:'')+(sameKA()?'':' | '+v('kantoor','kantoornaam'))+
     '\n📞 '+v('tel','telefoon')+'  ✉️ '+v('email','e-mail')+'\n🌐 '+(S.url?cleanUrl(S.url):'[website]');
 }
 function kostenZin(){return S.kosten==='kosteloos'?' Het kennismakingsgesprek is kosteloos en vrijblijvend.':(S.kosten==='tarief'?' Voor advies gelden onze tarieven volgens ons dienstverleningsdocument.':'')}
@@ -553,7 +555,7 @@ function qText(numbered){var n=0,t='';selected().forEach(function(sec){t+='\n'+s
 document.getElementById('qList').onclick=function(){copy(qText(true),this)};
 document.getElementById('qMail').onclick=function(){
   var titel=qmode==='scan'?'hypotheekscan':(qmode==='kort'?'jaarlijkse informatie-update':'nazorgscan hypotheek');
-  var t='Onderwerp: Uw '+titel+'\n\nBeste [naam klant],\n\nGraag houden wij uw hypotheek passend bij uw situatie. Daarom vragen wij u '+(qmode==='kort'?'eenmaal per jaar':'')+' een paar korte vragen te beantwoorden. Banken passen hun regels aan, en vooral als u tussen de 50 en 57 jaar bent en plannen heeft met uw woning, is het goed om dat op tijd te weten.\n\n'+qText(true)+'\n\n'+(S.scan?'U kunt de vragen ook online beantwoorden via: '+cleanUrl(S.scan)+'\n\n':'U kunt deze e-mail eenvoudig beantwoorden.\n\n')+'Blijkt uit uw antwoorden dat er aanleiding is voor een gesprek, dan nemen wij contact met u op.'+kostenZin()+'\n\nMet vriendelijke groet,\n\n'+v('adviseur','naam adviseur')+(S.functie?'\n'+S.functie:'')+'\n'+v('kantoor','kantoornaam')+'\n'+v('tel','telefoon')+' | '+v('email','e-mail')+'\n'+(S.url?cleanUrl(S.url):'[website]');
+  var t='Onderwerp: Uw '+titel+'\n\nBeste [naam klant],\n\nGraag houden wij uw hypotheek passend bij uw situatie. Daarom vragen wij u '+(qmode==='kort'?'eenmaal per jaar':'')+' een paar korte vragen te beantwoorden. Banken passen hun regels aan, en vooral als u tussen de 50 en 57 jaar bent en plannen heeft met uw woning, is het goed om dat op tijd te weten.\n\n'+qText(true)+'\n\n'+(S.scan?'U kunt de vragen ook online beantwoorden via: '+cleanUrl(S.scan)+'\n\n':'U kunt deze e-mail eenvoudig beantwoorden.\n\n')+'Blijkt uit uw antwoorden dat er aanleiding is voor een gesprek, dan nemen wij contact met u op.'+kostenZin()+'\n\nMet vriendelijke groet,\n\n'+v('adviseur','naam adviseur')+(S.functie?'\n'+S.functie:'')+(sameKA()?'':'\n'+v('kantoor','kantoornaam'))+'\n'+v('tel','telefoon')+' | '+v('email','e-mail')+'\n'+(S.url?cleanUrl(S.url):'[website]');
   copy(t,this)};
 document.getElementById('qPrint').onclick=function(){
   var titel=qmode==='scan'?'Hypotheekscan: is uw hypotheek nog passend?':(qmode==='kort'?'Jaarlijkse informatie-update hypotheek':'Nazorgscan hypotheek');var n=0;
@@ -611,7 +613,7 @@ function renderNL(){
   var head='<p style="font-size:13px;color:#5f6670;margin:0 0 4px"><b>Onderwerpregel</b> (kies er één)</p><ul style="margin:0 0 10px;font-size:15px"><li>Hypotheek vanaf 52 jaar: wat verandert er?</li><li>Plannen met uw woning? Laat ze op tijd doorrekenen</li><li>Uw pensioen telt bij een aantal banken eerder mee</li></ul><p style="font-size:13px;color:#5f6670;margin:0 0 14px"><b>Preheader:</b> Banken kijken eerder naar uw pensioen. Voor wie geldt dat, en wat kunt u nu al doen?</p><hr style="border:0;border-top:1px solid #ddd;margin:0 0 16px">';
   var brand='<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid '+S.kleur+';padding-bottom:10px;margin-bottom:16px;gap:12px">'+(S.logo?'<img src="'+S.logo+'" alt="'+esc(S.kantoor||'Logo')+'" style="max-height:50px;max-width:200px">':'<b style="font-size:19px;color:'+S.kleur+'">'+K+'</b>')+'<span style="font-size:13px;color:#5f6670">Nieuwsbrief</span></div>';
   var cta='<p style="margin:16px 0"><a href="'+link+'" target="_blank" rel="noopener" style="display:inline-block;background:'+S.kleur+';color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:6px">Doe de hypotheekcheck</a></p>';
-  var sign='<p>Met vriendelijke groet,<br><br><b>'+A+'</b>'+(S.functie?'<br>'+esc(S.functie):'')+'<br>'+K+'<br>'+T+' · '+E+' · '+U+'</p>';
+  var sign='<p>Met vriendelijke groet,<br><br><b>'+A+'</b>'+(S.functie?'<br>'+esc(S.functie):'')+(sameKA()?'':'<br>'+K)+'<br>'+T+' · '+E+' · '+U+'</p>';
   var disc='<p style="font-size:12.5px;color:#5f6670;border-top:1px solid #ddd;padding-top:8px;margin-top:18px">Algemene informatie, geen persoonlijk advies. Het beleid van geldverstrekkers verschilt en kan wijzigen. Stand van zaken: '+DATUM+'. AFM-vergunning '+vh('afm','nummer')+' · Kifid '+vh('kifid','nummer')+' · <span class="ph">[afmeldlink]</span></p>';
   var h2='style="color:'+S.kleur+';font-size:22px;margin:0 0 8px"';var h3='style="color:'+S.kleur+';font-size:18px;margin:16px 0 4px"';
   var body;
@@ -678,6 +680,19 @@ function renderCal(){
   document.getElementById('cal').innerHTML=h;
 }
 sd.addEventListener('input',renderCal);
+var DEMO={kantoor:'Dennes Roes',adviseur:'Dennes Roes',functie:'Directeur Hypotheekadvies',url:'dennes-roes.nl',tel:'06 51 11 78 93',email:'dennes.roes@blinqx.tech',scan:'',afm:'',kifid:'',kosten:'',kleur:'#17365D',logo:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgNTYwIDE2MCI+CjxyZWN0IHg9IjYiIHk9IjIwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgcng9IjIyIiBmaWxsPSIjMTczNjVEIi8+CjxwYXRoIGQ9Ik0zMCAxMTIgTDY2IDUwIEwxMDIgMTEyIFoiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSI1OCIgeT0iODgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyNCIgZmlsbD0iI0MwMDAwMCIvPgo8dGV4dCB4PSIxNDgiIHk9Ijc4IiBmb250LWZhbWlseT0iQ2FsaWJyaSwgQ2FybGl0bywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxNzM2NUQiIGxldHRlci1zcGFjaW5nPSIyIj5ERU5ORVMgUk9FUzwvdGV4dD4KPHRleHQgeD0iMTUwIiB5PSIxMTgiIGZvbnQtZmFtaWx5PSJDYWxpYnJpLCBDYXJsaXRvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZmlsbD0iIzVmNjY3MCIgbGV0dGVyLXNwYWNpbmc9IjEiPmh5cG90aGVla2FkdmllczwvdGV4dD4KPHJlY3QgeD0iNDAwIiB5PSI5NiIgd2lkdGg9IjExMCIgaGVpZ2h0PSIzNCIgcng9IjgiIGZpbGw9IiNDMDAwMDAiLz4KPHRleHQgeD0iNDU1IiB5PSIxMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJDYWxpYnJpLCBDYXJsaXRvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9IjMiPkRFTU88L3RleHQ+Cjwvc3ZnPg=='};
+function applyState(o){Object.keys(S).forEach(function(k){S[k]=(o&&typeof o[k]==='string')?o[k]:(k==='kleur'?'#17365D':'')});
+  document.querySelectorAll('[data-k]').forEach(function(el){el.value=S[el.dataset.k]||(el.type==='color'?'#17365D':'')});
+  document.getElementById('f_logo').value='';setLogo(S.logo);}
+applyState(DEMO);
+function nieuwKantoor(){applyState(null);show('t1');
+  document.getElementById('demoBar').innerHTML='<span style="flex:1"><b>Nieuw kantoor:</b> vul hieronder je eigen gegevens en logo in. Alle materialen worden direct bijgewerkt.</span><button class="b alt" id="demoBack" type="button">Demo terugzetten</button>';
+  document.getElementById('demoBack').onclick=function(){applyState(DEMO);document.getElementById('demoBar').innerHTML=demoBarHtml;bindDemo()};
+  setTimeout(function(){var f=document.getElementById('f_kantoor');f.focus();f.scrollIntoView({block:'center'})},50);}
+var demoBarHtml=document.getElementById('demoBar').innerHTML;
+function bindDemo(){var b=document.getElementById('demoClear');if(b)b.onclick=nieuwKantoor}
+bindDemo();
+document.querySelectorAll('[data-nieuw]').forEach(function(b){b.onclick=nieuwKantoor});
 renderAll();renderQ();renderCal();
 (function(){var h=location.hash.replace('#','');for(var k in HASH){if(HASH[k]===h){show(k,true);break}}})();
 })();
