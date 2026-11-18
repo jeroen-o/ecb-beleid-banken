@@ -71,8 +71,8 @@ input[type=color]{width:56px;height:38px;border:1px solid var(--line);border-rad
 button.b{background:#17365D;color:#fff;border:0;border-radius:6px;padding:8px 14px;font:600 14.5px Calibri,Carlito,Arial,sans-serif;cursor:pointer}
 button.b.alt{background:transparent;color:var(--navy);border:1px solid var(--navy)}
 button.b.red{background:#C00000}
-a.b{display:inline-block;background:#17365D;color:#fff;border:1px solid #17365D;border-radius:6px;padding:8px 14px;font:600 14.5px Calibri,Carlito,Arial,sans-serif;text-decoration:none}
-a.b.alt{background:transparent;color:var(--navy);border-color:var(--navy)}
+a.b,label.b{display:inline-block;background:#17365D;color:#fff;border:1px solid #17365D;border-radius:6px;padding:8px 14px;font:600 14.5px Calibri,Carlito,Arial,sans-serif;text-decoration:none}
+a.b.alt,label.b.alt{background:transparent;color:var(--navy);border-color:var(--navy)}
 a.b:hover,button.b:hover{filter:brightness(1.12)}
 .afm{border-left:5px solid var(--orange);background:#fff6ee;color:#3d2a14;padding:10px 14px;border-radius:0 8px 8px 0;font-size:14.5px;line-height:1.45;margin:10px 0}
 .afm b{color:#9a4b0c}
@@ -390,7 +390,7 @@ function renderVK(){
   document.documentElement.style.setProperty('--accent',S.kleur);
   document.getElementById('logoBox').innerHTML=S.logo?'<img src="'+S.logo+'" alt="Logo">':'<span class="muted">Nog geen logo</span>';
   document.getElementById('vk').innerHTML=(S.logo?'<img src="'+S.logo+'" alt="Logo">':'')+
-    '<div><div class="nm">'+vh('adviseur','naam adviseur')+'</div><div>'+vh('functie','functie')+' · '+vh('kantoor','kantoornaam')+'</div>'+
+    '<div><div class="nm">'+vh('adviseur','naam adviseur')+'</div><div>'+vh('functie','functie')+(sameKA()?'':' · '+vh('kantoor','kantoornaam'))+'</div>'+
     '<div class="muted">📞 '+vh('tel','telefoon')+' · ✉️ '+vh('email','e-mail')+' · 🌐 '+(S.url?esc(cleanUrl(S.url)):'<span class="ph">[website]</span>')+'</div></div>';
 }
 
