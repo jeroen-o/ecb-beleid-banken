@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Van regel naar kantoorproces</title>
+<meta name="description" content="Presentatie Dennes Roes – informatieronde DFO × NVHP, november 2026: bedrijfsvoering rond aangescherpt hypotheekbeleid (EBA/ECB) voor 50-plussers.">
+<style>
+:root{
+  --navy:#17365D; --red:#C00000; --red-d:#B50000; --ink:#222222; --mute:#666666;
+  --line:#D9D9D9; --soft:#F8F8F8; --sky:#EAF2F8; --green:#2E8B2E; --orange:#E8741E;
+  --bg:#0f1e33; --slide:#ffffff;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0a1424; } }
+:root[data-theme="dark"]{ --bg:#0a1424; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);font-family:Calibri,Carlito,"Segoe UI",Arial,sans-serif;color:var(--ink);overflow:hidden}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#deck{width:1280px;height:720px;position:relative;transform-origin:center center}
+.slide{position:absolute;inset:0;background:var(--slide);display:none;flex-direction:column;padding:48px 64px 44px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.slide.active{display:flex}
+.slide::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--navy)}
+.slide::after{content:"";position:absolute;left:0;top:0;width:10px;height:120px;background:var(--red)}
+.kicker{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:6px}
+h1{font-family:"Calibri Light",Calibri,Carlito,Arial,sans-serif;font-weight:300;color:var(--navy);font-size:40px;line-height:1.12;margin-bottom:22px}
+h2{font-size:21px;color:var(--navy);margin-bottom:8px}
+p,li{font-size:19px;line-height:1.38}
+ul{padding-left:22px}
+li{margin-bottom:5px}
+li::marker{color:var(--red)}
+.foot{position:absolute;left:64px;right:64px;bottom:14px;display:flex;justify-content:space-between;font-size:12.5px;color:var(--mute)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--soft);border:1px solid var(--line);border-top:4px solid var(--navy);border-radius:6px;padding:16px 18px}
+.card.r{border-top-color:var(--red)} .card.g{border-top-color:var(--green)} .card.o{border-top-color:var(--orange)}
+.card p,.card li{font-size:16.5px}
+.card h2{font-size:18.5px}
+.num{display:inline-flex;width:34px;height:34px;border-radius:50%;background:var(--red);color:#fff;font-weight:700;align-items:center;justify-content:center;font-size:18px;margin-right:10px;flex:none}
+.tag{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 8px;border-radius:10px;margin-right:6px;vertical-align:middle}
+.t-besloten{background:#e3f1e3;color:#1f6b1f}.t-waarsch{background:#fdeedd;color:#9a4b0c}.t-mogelijk{background:#eee;color:#555}
+.must{background:#fbe5e5;color:var(--red-d)} .can{background:var(--sky);color:var(--navy)}
+table{border-collapse:collapse;width:100%;font-size:15.5px}
+th{background:var(--navy);color:#fff;text-align:left;padding:7px 10px;font-weight:600}
+td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.3}
+tr:nth-child(even) td{background:var(--soft)}
+.afm{border-left:5px solid var(--orange);background:#fff6ee;padding:10px 14px;font-size:15px;line-height:1.35;border-radius:0 6px 6px 0;margin-top:auto}
+.afm b{color:#9a4b0c}
+.key{margin-top:auto;background:var(--navy);color:#fff;padding:12px 18px;border-radius:6px;font-size:18px}
+.key b{color:#ffd6d6}
+.title-slide{background:var(--navy);color:#fff;justify-content:center}
+.title-slide::before{background:var(--red)} .title-slide::after{display:none}
+.title-slide h1{color:#fff;font-size:52px;max-width:1000px}
+.title-slide .kicker{color:#ffb3b3}
+.title-slide p{font-size:22px;color:#d7e3f1}
+.title-slide .foot{color:#9fb4cc}
+.step{display:flex;align-items:flex-start;margin-bottom:12px}
+.flow{display:flex;gap:10px;align-items:stretch;margin-top:6px}
+.flow .card{flex:1;text-align:center;padding:14px 10px}
+.flow .arrow{align-self:center;color:var(--red);font-size:26px;font-weight:700}
+.big{font-size:44px;font-weight:700;color:var(--red);line-height:1}
+.small{font-size:14px;color:var(--mute)}
+a{color:var(--navy)}
+.title-slide a{color:#fff}
+/* UI */
+#bar{position:fixed;left:0;right:0;bottom:0;height:4px;background:rgba(255,255,255,.12)}
+#bar i{display:block;height:100%;background:var(--red);width:0;transition:width .2s}
+#ctrl{position:fixed;right:14px;top:10px;display:flex;gap:6px;opacity:.25;z-index:6;transition:opacity .2s}
+#ctrl:hover{opacity:1}
+#ctrl button{background:#fff;border:0;border-radius:4px;padding:6px 10px;font:600 13px Calibri,Carlito,Arial,sans-serif;color:var(--navy);cursor:pointer}
+#notes{position:fixed;left:0;right:0;bottom:4px;max-height:36vh;overflow:auto;background:#fffdf3;border-top:3px solid var(--orange);padding:12px 18px;font-size:16px;line-height:1.45;display:none;z-index:5}
+#notes.on{display:block}
+#notes b{color:var(--navy)}
+.sn{display:none}
+@media (max-width:700px){#ctrl button{padding:6px 7px}}
+</style>
+</head>
+<body>
+<div id="stage"><div id="deck">
+
+<!-- 1 -->
+<section class="slide title-slide">
+  <div class="kicker">Informatieronde DFO × NVHP · november 2026</div>
+  <h1>Van regelwijziging naar kantoorproces</h1>
+  <p style="max-width:900px">Bedrijfsvoering rond het aangescherpte hypotheekbeleid voor 50-plussers: wie benader je, hoe, in welke volgorde, door wie en tegen welke vergoeding?</p>
+  <p style="margin-top:34px;font-size:24px;color:#fff"><b>Dennes Roes</b></p>
+  <div class="foot"><span>Stand van zaken 18-11-2026 · beleid geldverstrekkers kan wijzigen</span><span>1</span></div>
+  <div class="sn"><b>± 1 min.</b> Welkom. De sprekers vóór mij hebben uitgelegd <i>waarom</i> banken aanpassen en welke vaktechnische adviezen je kunt geven. Ik ga over het andere deel: hoe organiseer je dit op kantoor, zodat het geen losse brandjes worden maar een proces.</div>
+</section>
+
+<!-- 2 -->
+<section class="slide">
+  <div class="kicker">Uitgangspunten</div>
+  <h1>30 minuten bedrijfsvoering, in zeven vragen</h1>
+  <div class="grid2">
+    <div>
+      <div class="step"><span class="num">1</span><p>Welke klanten <b>kan</b> of <b>moet</b> je benaderen, en voor welke aanpassing?</p></div>
+      <div class="step"><span class="num">2</span><p>Hoe benader je ze en waar differentieer je in?</p></div>
+      <div class="step"><span class="num">3</span><p>Welke prioritering breng je aan?</p></div>
+      <div class="step"><span class="num">4</span><p>Hoe verdeel je de taken binnen kantoor?</p></div>
+    </div>
+    <div>
+      <div class="step"><span class="num">5</span><p>Hoe leg je het vast, ook als de klant niet reageert?</p></div>
+      <div class="step"><span class="num">6</span><p>Welk vergoedingsmodel zet je in?</p></div>
+      <div class="step"><span class="num">7</span><p>Met welke partijen werk je samen, en hoe?</p></div>
+      <div class="card" style="margin-top:14px"><p><b>Al behandeld vanavond:</b> de aanleiding (EBA/ECB/DNB) en de vaktechnische adviezen. Die herhaal ik niet.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>2</span></div>
+  <div class="sn"><b>± 1 min.</b> Kort de opbouw. Benadruk: geen vaktechniek, wél organisatie. Aan het eind een concreet stappenplan tot maart 2027.</div>
+</section>
+
+<!-- 3 -->
+<section class="slide">
+  <div class="kicker">Kort ter herinnering</div>
+  <h1>Wat verandert er, en voor wie?</h1>
+  <table>
+    <tr><th style="width:24%">Aanpassing</th><th>Inhoud</th><th style="width:20%">Wanneer</th><th style="width:15%">Status</th></tr>
+    <tr><td>Pensioen eerder meetellen</td><td>Rabobank en Obvion toetsen het verwachte pensioeninkomen <b>15 jaar</b> vóór de AOW-leeftijd in plaats van 10 jaar: bij AOW op 67 vanaf <b>52</b> in plaats van 57</td><td>Maart 2027</td><td><span class="tag t-besloten">Besloten</span></td></tr>
+    <tr><td>Schuld op hoge leeftijd</td><td>Toets op de resterende schuld rond 85 jaar ten opzichte van de woningwaarde (ABN AMRO 50%; Rabobank en Obvion 70%)</td><td>Dec 2026 / maart 2027</td><td><span class="tag t-besloten">Besloten</span></td></tr>
+    <tr><td>Aflossingsvrij</td><td>Minder ruimte voor nieuw aflossingsvrij; mogelijk afbouw van het bestaande volume</td><td>Gefaseerd</td><td><span class="tag t-waarsch">Waarschijnlijk</span></td></tr>
+    <tr><td>Monitoring tijdens de looptijd</td><td>Actueel inkomen, (her)taxatie, onderhoudsstaat, pensioenopbouw</td><td>Komende periode</td><td><span class="tag t-mogelijk">Mogelijk</span></td></tr>
+  </table>
+  <p style="margin-top:14px;font-size:17px">Niet iedere bank volgt hetzelfde pad: zo hanteert ASN geen algemene 52-jaarsgrens. Afstemming tussen banken is mededingingsrechtelijk niet toegestaan, dus er komt <b>geen uniforme sectorregel</b>. Een bestaande hypotheek die niet wordt aangepast, blijft in principe ongemoeid. De nieuwe regels raken klanten op het moment dat ze <b>verhuizen, verhogen of oversluiten</b>.</p>
+  <div class="afm"><b>⚠ Compliance:</b> leeftijdsgrenzen en percentages verschillen per geldverstrekker en kunnen nog wijzigen. Communiceer ze nooit als algemene regel naar klanten; verwijs naar het actuele acceptatiebeleid van de geldverstrekker.</div>
+  <div class="foot"><span>Bronnen: rabobank.nl, hypothecairplanner.nl, EBA Guidelines on Loan Origination and Monitoring</span><span>3</span></div>
+  <div class="sn"><b>± 2 min.</b> Alleen de kern, de vorige sprekers hebben dit uitgediept. De boodschap voor de bedrijfsvoering: <b>het moment van aanpassen</b> is het risicomoment. Wie de komende jaren iets wil (verhuizen, verbouwen, verduurzamen, oversluiten), heeft er belang bij dat vóór de ingangsdatum uit te zoeken.</div>
+</section>
+
+<!-- 4 -->
+<section class="slide">
+  <div class="kicker">Vraag 1</div>
+  <h1>Welke klanten <span style="color:var(--red)">moet</span> of <span style="color:var(--navy)">kan</span> je benaderen?</h1>
+  <table>
+    <tr><th style="width:34%">Klantsegment in je portefeuille</th><th>Raakt aan aanpassing</th><th style="width:16%">Moet / kan</th></tr>
+    <tr><td><b>48–56 jaar</b> met een verhuis-, verbouw- of verduurzamingswens</td><td>Pensioen 15 jaar vooraf (52 i.p.v. 57)</td><td><span class="tag must">Moet*</span></td></tr>
+    <tr><td><b>55+</b> met hoog aandeel aflossingsvrij en rentevast-einde vóór 2032</td><td>Schuld op 85 jaar, afbouw aflossingsvrij</td><td><span class="tag must">Moet*</span></td></tr>
+    <tr><td>Leningdelen van <b>vóór 2001</b></td><td>Renteaftrek stopt per 1-1-2031 (los van EBA, wel zelfde gesprek)</td><td><span class="tag must">Moet*</span></td></tr>
+    <tr><td>Rentevast tussen 2019 en 2021 afgesloten (± 2%)</td><td>Renteschok bij verlengen + mogelijke hertoetsing</td><td><span class="tag can">Kan</span></td></tr>
+    <tr><td>Hoge LTV en/of slecht energielabel</td><td>LTV-eisen, verduurzaming, taxatie</td><td><span class="tag can">Kan</span></td></tr>
+    <tr><td>Kinderen van bestaande klanten (starters)</td><td>Familiebank / schenken als oplossing ouders</td><td><span class="tag can">Kan</span></td></tr>
+  </table>
+  <div class="afm"><b>⚠ Compliance, risico:</b> * "Moet" is géén wettelijke plicht om de hele portefeuille te benaderen. Het volgt uit (a) een lopende nazorg- of abonnementsafspraak en (b) de zorgplicht en het klantbelang (art. 4:24a Wft). Wie actief nazorg <i>belooft</i> in het dienstverleningsdocument en die niet levert, loopt een aansprakelijkheids- en toezichtsrisico. Controleer je eigen dienstverleningsdocument.</div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>4</span></div>
+  <div class="sn"><b>± 4 min.</b> Het onderscheid moet/kan is de kern voor je bedrijfsvoering. <b>Moet</b>: klanten met wie je een doorlopende relatie hebt afgesproken, en die in een segment vallen waar de wijziging hun plannen concreet raakt. <b>Kan</b>: klanten voor wie je met een gesprek waarde toevoegt, en wat ook een commerciële kans is. Vraag de zaal: wie weet uit zijn hoofd hoeveel klanten tussen 48 en 56 hij heeft?</div>
+</section>
+
+<!-- 5 -->
+<section class="slide">
+  <div class="kicker">Vraag 1 · hoe vind je ze?</div>
+  <h1>Selecteren begint bij je data</h1>
+  <div class="grid2">
+    <div class="card">
+      <h2>Velden die je nodig hebt per dossier</h2>
+      <ul>
+        <li>Geboortedatum <b>beide</b> partners → eigen AOW-datum</li>
+        <li>Geldverstrekker + label (beleid verschilt!)</li>
+        <li>Per leningdeel: aflosvorm, ingangsdatum, rentevast-einde, rente</li>
+        <li>Marktwaarde + datum laatste taxatie/WOZ → LTV</li>
+        <li>Pensioeninkomen (UPO / mijnpensioenoverzicht)</li>
+        <li>Energielabel</li>
+        <li>Soort relatie: abonnement, nazorgafspraak, slapend</li>
+      </ul>
+    </div>
+    <div>
+      <div class="card r" style="margin-bottom:16px">
+        <h2>Realiteit op veel kantoren</h2>
+        <p>Pensioeninkomen en marktwaarde ontbreken of zijn verouderd. Leningdelen staan niet gestructureerd in het systeem. <b>Datakwaliteit is stap 0.</b></p>
+      </div>
+      <div class="card g">
+        <h2>Praktisch</h2>
+        <p>Maak één export uit je adviessysteem/CRM. Laat de klant de ontbrekende gegevens zelf aanvullen via een (slim) formulier, in plaats van dat je ze zelf gaat zoeken.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>5</span></div>
+  <div class="sn"><b>± 2 min.</b> Zonder data geen selectie. Veel adviseurs hebben de geldverstrekker en leningdelen wél, maar pensioeninkomen en actuele waarde níet. Dat los je niet op met overuren maar door de klant zelf te laten aanleveren, wat later terugkomt bij de tooling.</div>
+</section>
+
+<!-- 6 -->
+<section class="slide">
+  <div class="kicker">Vraag 2</div>
+  <h1>Benaderen: van breed naar persoonlijk</h1>
+  <div class="flow">
+    <div class="card"><h2>① Informeren</h2><p>Nieuwsbrief, website, algemene brief/mail aan de hele portefeuille</p><p class="small" style="margin-top:6px">Alle klanten</p></div>
+    <div class="arrow">→</div>
+    <div class="card o"><h2>② Uitvragen</h2><p>Persoonlijke mail met een scan/formulier: plannen, pensioen, wensen</p><p class="small" style="margin-top:6px">Segmenten "moet" + "kan"</p></div>
+    <div class="arrow">→</div>
+    <div class="card r"><h2>③ Bellen</h2><p>Persoonlijk contact, beoordelen of er een adviesvraag ligt</p><p class="small" style="margin-top:6px">Prio 1 + scan-signalen</p></div>
+    <div class="arrow">→</div>
+    <div class="card g"><h2>④ Adviesgesprek</h2><p>Doorrekenen, alternatieven, vastleggen</p><p class="small" style="margin-top:6px">Concrete vraag</p></div>
+  </div>
+  <div class="grid2" style="margin-top:20px">
+    <div><h2>Differentiëren in</h2><ul><li><b>Urgentie</b>: plannen binnen 12–24 maanden of "ooit"</li><li><b>Toon</b>: geruststellen bij een bestaande hypotheek zonder wijziging, activeren bij plannen</li><li><b>Kanaal</b>: digitaal waar het kan, persoonlijk waar het moet</li></ul></div>
+    <div><h2>Boodschap</h2><p>"Heeft u de komende jaren plannen met uw woning? Laat dan nú uitzoeken wat er mogelijk is, vóór de banken hun regels aanpassen." <b>Geen paniek, wel een deadline.</b></p></div>
+  </div>
+  <div class="afm"><b>⚠ AFM-risico:</b> bevat de benadering een vergelijking of aanbeveling ("u kunt beter nu oversluiten bij X"), dan is het <b>advies</b>. Leg dan het dienstverleningsregime en de vergoeding vóóraf vast. Wervende teksten met druk ("laatste kans!") kunnen als misleidend worden gezien: wees feitelijk en noem geen bank-specifieke grenzen als algemene regel.</div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>6</span></div>
+  <div class="sn"><b>± 4 min.</b> Trechter: hoe verder naar rechts, hoe duurder per klant. Je wilt dus dat de scan het zware werk doet: de klant geeft zelf aan of er plannen zijn. Stel dat je portefeuille 1.500 klanten heeft, dan bel je hooguit 150–250 mensen persoonlijk.</div>
+</section>
+
+<!-- 7 -->
+<section class="slide">
+  <div class="kicker">Vraag 3</div>
+  <h1>Prioriteren: urgentie × impact</h1>
+  <div class="grid2">
+    <table>
+      <tr><th>Signaal</th><th style="width:22%">Punten</th></tr>
+      <tr><td>Leeftijd 50–56 én verhuis-/verbouwplannen</td><td>+3</td></tr>
+      <tr><td>Rentevast-einde binnen 24 maanden</td><td>+2</td></tr>
+      <tr><td>Aflossingsvrij &gt; 50% van de schuld</td><td>+2</td></tr>
+      <tr><td>Leningdeel van vóór 2001</td><td>+2</td></tr>
+      <tr><td>Bank met aangekondigde aanscherping</td><td>+2</td></tr>
+      <tr><td>LTV &gt; 80% of energielabel E–G</td><td>+1</td></tr>
+      <tr><td>Abonnement/nazorgafspraak</td><td>+1</td></tr>
+    </table>
+    <div>
+      <div class="card r" style="margin-bottom:12px"><h2>Prio 1 · score ≥ 6</h2><p>Persoonlijk bellen <b>vóór 1 januari 2027</b></p></div>
+      <div class="card o" style="margin-bottom:12px"><h2>Prio 2 · score 3–5</h2><p>Persoonlijke mail + scan, bellen bij signaal, <b>vóór maart 2027</b></p></div>
+      <div class="card" style="margin-bottom:12px"><h2>Prio 3 · score 0–2</h2><p>Informeren via nieuwsbrief, meenemen in reguliere nazorgcyclus</p></div>
+      <p class="small">Scoremodel is een voorbeeld, stem het af op je eigen portefeuille en capaciteit.</p>
+    </div>
+  </div>
+  <div class="key">Prioriteit = <b>wie het meest verliest</b> als je níet belt × <b>hoe snel</b> dat verlies intreedt.</div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>7</span></div>
+  <div class="sn"><b>± 3 min.</b> Een eenvoudig puntenmodel maakt de prioritering uitlegbaar, ook richting de AFM en je eigen collega's. Belangrijk: reken eerst uit hoeveel klanten in prio 1 vallen en hoeveel belcapaciteit je hebt. Past het niet, schuif dan de drempel op, maar documenteer waarom.</div>
+</section>
+
+<!-- 8 -->
+<section class="slide">
+  <div class="kicker">Vraag 4</div>
+  <h1>Taakverdeling binnen kantoor</h1>
+  <table>
+    <tr><th style="width:26%">Activiteit</th><th>Binnendienst / backoffice</th><th>Klantadviseur / junior</th><th>Erkend hypotheekadviseur</th><th>Directie / compliance</th></tr>
+    <tr><td>Beleid, doelgroep, scoremodel</td><td></td><td></td><td>Meedenken</td><td><b>Eigenaar</b></td></tr>
+    <tr><td>Data-export en opschonen</td><td><b>Uitvoeren</b></td><td></td><td></td><td>Controle</td></tr>
+    <tr><td>Mailing + scan versturen</td><td><b>Uitvoeren</b></td><td></td><td></td><td>Tekst akkoord</td></tr>
+    <tr><td>Scan-uitkomsten triëren</td><td>Voorbereiden</td><td><b>Uitvoeren</b></td><td>Bij twijfel</td><td></td></tr>
+    <tr><td>Bellen prio 1 en 2</td><td>Afspraak plannen</td><td><b>Uitvoeren</b></td><td>Complexe gevallen</td><td></td></tr>
+    <tr><td>Adviesgesprek + rapport</td><td>Dossier compleet</td><td>Ondersteunen</td><td><b>Uitvoeren</b></td><td></td></tr>
+    <tr><td>Vastlegging + rappel</td><td><b>Uitvoeren</b></td><td>Notitie gesprek</td><td>Adviesdossier</td><td>Steekproef</td></tr>
+  </table>
+  <div class="afm" style="margin-top:14px"><b>⚠ Wft-vakbekwaamheid:</b> wie de klant <b>adviseert</b> moet Wft-gediplomeerd en PE-actueel zijn. Een junior of binnendienstmedewerker mag informeren en uitvragen, maar geen advies geven. Trek die grens expliciet in je belscript.</div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>8</span></div>
+  <div class="sn"><b>± 3 min.</b> De duurste uren (erkend adviseur) wil je alleen inzetten waar echt advies nodig is. Laat binnendienst en junioren het voorwerk doen, met een belscript dat precies zegt waar informeren ophoudt en advies begint.</div>
+</section>
+
+<!-- 9 -->
+<section class="slide">
+  <div class="kicker">Vraag 5</div>
+  <h1>Vastleggen, ook als de klant niet reageert</h1>
+  <div class="grid2">
+    <div class="card">
+      <h2>Contactlog per klant</h2>
+      <ul>
+        <li>Datum, kanaal, medewerker</li>
+        <li>Inhoud: welke informatie is gegeven (verwijs naar de versie van de brief)</li>
+        <li>Reactie van de klant: ja / nee / geen</li>
+        <li>Vervolgafspraak of afsluitende conclusie</li>
+        <li>Prioriteitsscore + reden</li>
+      </ul>
+    </div>
+    <div class="card r">
+      <h2>Bij geen reactie: 3 contactmomenten</h2>
+      <div class="step"><span class="num" style="width:28px;height:28px;font-size:15px">1</span><p>Mail met scan</p></div>
+      <div class="step"><span class="num" style="width:28px;height:28px;font-size:15px">2</span><p>Herinnering na 2–3 weken (ander kanaal: sms/telefoon)</p></div>
+      <div class="step"><span class="num" style="width:28px;height:28px;font-size:15px">3</span><p>Afsluitende brief: "wij hebben u geïnformeerd over …, u heeft aangegeven / niet gereageerd …, u kunt altijd contact opnemen"</p></div>
+      <p class="small">Daarna: dossier status "geïnformeerd – geen reactie" + datum volgende reguliere review.</p>
+    </div>
+  </div>
+  <div class="afm"><b>⚠ Compliance:</b> de afsluitende brief beperkt het risico, maar sluit aansprakelijkheid niet uit. Leg vast <i>wat</i> je hebt gecommuniceerd (bewaar de tekst per versie) en <i>dat</i> het is verstuurd. Een klant die "nee" zegt na een uitgevraagd plan legt je schriftelijk vast, inclusief de risico's die je hebt benoemd.</div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>9</span></div>
+  <div class="sn"><b>± 3 min.</b> "Niet reageren" is ook een uitkomst, maar alleen als je kunt aantonen dat je het hebt geprobeerd. Een vast ritme van drie contactmomenten is goed uitlegbaar. Automatiseer de herinneringen; de afsluitende brief is een standaardtekst, geen maatwerk.</div>
+</section>
+
+<!-- 10 -->
+<section class="slide">
+  <div class="kicker">Vraag 6</div>
+  <h1>Welk vergoedingsmodel?</h1>
+  <table>
+    <tr><th style="width:22%">Model</th><th>Hoe</th><th style="width:26%">Voordeel</th><th style="width:26%">Nadeel</th></tr>
+    <tr><td><b>Abonnement / servicefee</b></td><td>Vast bedrag per maand of jaar, scan en review inbegrepen</td><td>Voorspelbaar, past bij doorlopende monitoring</td><td>Lage acceptatie bij "slapende" klanten</td></tr>
+    <tr><td><b>Gratis scan + vaste fee per traject</b></td><td>Scan en eerste gesprek kosteloos; advies wijziging/verlenging/verhuizing tegen een vaste prijs</td><td>Lage drempel, duidelijk</td><td>Onbetaalde uren bij veel gesprekken zonder vervolg</td></tr>
+    <tr><td><b>Uurtarief</b></td><td>Op basis van bestede tijd, met een indicatie vooraf</td><td>Eerlijk bij maatwerk</td><td>Onzeker voor de klant, remt het contact</td></tr>
+    <tr><td><b>Pakket "Hypotheek &amp; pensioen-check"</b></td><td>Vaste prijs voor een integrale check incl. pensioen, testament-signalering en ORV</td><td>Hoge toegevoegde waarde</td><td>Vraagt brede kennis of samenwerking</td></tr>
+  </table>
+  <div class="afm"><b>⚠ AFM/Wft-risico:</b> sinds 2013 geldt het <b>provisieverbod</b> voor hypotheken: een geldverstrekker mag de adviseur niet betalen voor advies of bemiddeling. Ideeën als een "uitbestedingsvergoeding" van de bank voor nazorg staan hiermee op gespannen voet. Ga daar niet op in zonder juridische toets. Werk het dienstverleningsdocument en de tarievenkaart bij <b>vóórdat</b> je benadert.</div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>10</span></div>
+  <div class="sn"><b>± 4 min.</b> Het werk verschuift van het afsluitmoment naar de looptijd. Wie nog alleen per afgesloten hypotheek verdient, gaat deze golf niet rendabel kunnen bedienen. Maak een keuze en communiceer die vóóraf. Vraag de zaal: wie heeft al een abonnement, en hoeveel procent van de klanten neemt het?</div>
+</section>
+
+<!-- 11 -->
+<section class="slide">
+  <div class="kicker">Vraag 7</div>
+  <h1>Samenwerken: met wie en hoe?</h1>
+  <div class="grid4">
+    <div class="card"><h2>Geldverstrekkers</h2><p>Accountmanager: actuele acceptatie, overgangsregelingen, deadlines voor offertes</p></div>
+    <div class="card"><h2>Pensioen- / financieel planner</h2><p>Pensioeninkomen, Wtp-keuzes, inkomensplanning na AOW</p></div>
+    <div class="card"><h2>Notaris</h2><p>Testament, schenken, familiebank, verdeling</p></div>
+    <div class="card"><h2>Taxateur</h2><p>Hertaxatie voor de LTV, desktop of fysiek</p></div>
+    <div class="card"><h2>Makelaar</h2><p>Doorstroom: verkoop en aankoop afstemmen</p></div>
+    <div class="card"><h2>Verduurzaming</h2><p>Energieadvies, label, financieringsmogelijkheden</p></div>
+    <div class="card"><h2>Softwareleverancier</h2><p>Selectie, scan, workflow, vastlegging (zie volgende dia)</p></div>
+    <div class="card"><h2>NVHP / DFO</h2><p>Kennis, PE, actuele duiding, ervaringen collega's</p></div>
+  </div>
+  <div class="grid2" style="margin-top:16px">
+    <div><h2>Hoe</h2><ul><li>Vaste verwijsafspraken, schriftelijk</li><li>Eén regisseur richting de klant: jij</li><li>Terugkoppeling in het klantdossier</li></ul></div>
+    <div class="afm" style="margin-top:0;align-self:start"><b>⚠ AVG + Wft:</b> klantgegevens delen met derden vraagt een grondslag (meestal toestemming van de klant) en een verwerkersovereenkomst met je softwareleverancier. Ontvangen of betalen van verwijsvergoedingen moet je transparant maken en mag niet botsen met het provisieverbod.</div>
+  </div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>11</span></div>
+  <div class="sn"><b>± 3 min.</b> Senioren hebben vaak een gecombineerde vraag: hypotheek, pensioen, erfrecht. Niemand kan alles; wie een netwerk heeft, kan het integrale gesprek wél voeren. Belangrijkste: blijf zelf regisseur en leg de terugkoppeling vast.</div>
+</section>
+
+<!-- 12 -->
+<section class="slide">
+  <div class="kicker">Tooling</div>
+  <h1>Laat software het voorwerk doen</h1>
+  <div class="grid2">
+    <div class="card g">
+      <h2>Blinqx · Actiefbeheerscan</h2>
+      <p>Slimme formulieren die de klant zelf invult: plannen met de woning, pensioen, gezinssituatie. De antwoorden komen gestructureerd terug, zodat je kunt selecteren en prioriteren.</p>
+      <p style="margin-top:8px"><a href="https://actiefbeheerscan.nl" target="_blank" rel="noopener">actiefbeheerscan.nl</a> · <a href="https://formulier.actiefbeheerscan.nl/s/PzSDxcFYAsLw6jCq" target="_blank" rel="noopener">voorbeeldformulier</a></p>
+    </div>
+    <div class="card">
+      <h2>Training</h2>
+      <p>Voor Blinqx-gebruikers komt er een <b>training van een dagdeel</b>. Het ligt voor de hand dat andere systeemleveranciers vergelijkbare ondersteuning gaan bieden. Vraag er bij je eigen leverancier naar.</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h2>Gesprekshulp voor de klant</h2>
+    <p>NVHP "Hypotheek straks": kan ik straks nog doorstromen of mijn hypotheek verlengen? Een verkenning, geen advies. <a href="https://jeroen-o.github.io/Kan-ik-straks-nog-doorstromen-of-mijn-hypotheek-verlengen-/index.html" target="_blank" rel="noopener">Naar de tool</a></p>
+  </div>
+  <div class="key">Tooling vervangt het adviesgesprek niet. Het zorgt dat je de <b>juiste</b> gesprekken voert.</div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>12</span></div>
+  <div class="sn"><b>± 2 min.</b> Demo eventueel kort het voorbeeldformulier. Noem de training van een dagdeel voor Blinqx-gebruikers. Neem aan dat andere leveranciers dit ook gaan doen; dat is geen toezegging namens hen.</div>
+</section>
+
+<!-- 13 -->
+<section class="slide">
+  <div class="kicker">Van plan naar actie</div>
+  <h1>Stappenplan tot maart 2027</h1>
+  <div class="flow">
+    <div class="card"><div class="big" style="font-size:30px">Nov</div><h2 style="margin-top:6px">Besluiten</h2><p>Doelgroep, scoremodel, vergoeding, dienstverleningsdocument</p></div>
+    <div class="arrow">→</div>
+    <div class="card"><div class="big" style="font-size:30px">Dec</div><h2 style="margin-top:6px">Data + prio 1</h2><p>Export, opschonen, prio 1 bellen, mailing + scan klaarzetten</p></div>
+    <div class="arrow">→</div>
+    <div class="card"><div class="big" style="font-size:30px">Jan</div><h2 style="margin-top:6px">Uitvragen</h2><p>Scan naar prio 2, triëren, gesprekken plannen</p></div>
+    <div class="arrow">→</div>
+    <div class="card"><div class="big" style="font-size:30px">Feb</div><h2 style="margin-top:6px">Adviseren</h2><p>Aanvragen vóór de ingangsdatum, herinneringen, afsluitende brieven</p></div>
+    <div class="arrow">→</div>
+    <div class="card g"><div class="big" style="font-size:30px;color:var(--green)">Mrt+</div><h2 style="margin-top:6px">Borgen</h2><p>Vaste reviewcyclus, monitoring, evaluatie</p></div>
+  </div>
+  <div class="grid2" style="margin-top:22px">
+    <div><h2>Checklist voor maandagochtend</h2><ul><li>Hoeveel klanten van 48–56 heb ik, en bij welke banken?</li><li>Klopt mijn dienstverleningsdocument met wat ik ga doen?</li><li>Wie op kantoor is eigenaar van dit project?</li></ul></div>
+    <div><h2>Meten</h2><ul><li>% benaderd per prioriteit</li><li>% reactie op de scan</li><li>Aantal adviestrajecten + omzet per traject</li></ul></div>
+  </div>
+  <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>13</span></div>
+  <div class="sn"><b>± 2 min.</b> Concreet maken: wat doe je deze maand. Let op: deadlines en overgangsregelingen (bijvoorbeeld voor offertes die vóór de ingangsdatum zijn uitgebracht) verschillen per geldverstrekker. Vraag ze op bij je accountmanager.</div>
+</section>
+
+<!-- 14 -->
+<section class="slide title-slide">
+  <div class="kicker">Afsluiting</div>
+  <h1>Regels veranderen bij de bank.<br>Het verschil maak je op kantoor.</h1>
+  <p>Vragen en discussie</p>
+  <p style="margin-top:30px;font-size:15px;color:#9fb4cc;max-width:1000px">Bronnen: rabobank.nl/particulieren/hypotheek/nieuw-beleid · hypothecairplanner.nl/themas/ecb-beleid-hypotheken · EBA Guidelines on Loan Origination and Monitoring (EBA/GL/2020/06) · EBA revised Guidelines on internal governance · NVHP "Hypotheek straks". Deze presentatie is geen juridisch of fiscaal advies; check actueel beleid per geldverstrekker.</p>
+  <div class="foot"><span>Dennes Roes · Informatieronde DFO × NVHP</span><span>14</span></div>
+  <div class="sn"><b>± 1 min + vragen.</b> Samenvatten in één zin: de aanpassing is bancair, de oplossing is organisatorisch. Wie nu selecteert, prioriteert en vastlegt, voert in maart de juiste gesprekken.</div>
+</section>
+
+</div></div>
+
+<div id="notes"></div>
+<div id="bar"><i></i></div>
+<div id="ctrl">
+  <button id="bPrev" title="Vorige (←)">◀</button>
+  <button id="bNext" title="Volgende (→)">▶</button>
+  <button id="bNotes" title="Sprekersnotities (N)">Notities</button>
+  <button id="bPrint" title="Handout printen (P)">Print</button>
+  <button id="bFull" title="Volledig scherm (F)">⛶</button>
+</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var deck=document.getElementById('deck'), notes=document.getElementById('notes'), bar=document.querySelector('#bar i');
+  var i=0, showNotes=false;
+  var m=/#(\d+)/.exec(location.hash); if(m){i=Math.min(Math.max(+m[1]-1,0),slides.length-1);}
+  function fit(){
+    var avail=showNotes?window.innerHeight*0.62:window.innerHeight;
+    var s=Math.min(window.innerWidth/1280, avail/720)*0.97;
+    deck.style.transform='scale('+s+')';
+    document.getElementById('stage').style.bottom=showNotes?(window.innerHeight-avail)+'px':'0';
+  }
+  function go(n){
+    i=Math.min(Math.max(n,0),slides.length-1);
+    slides.forEach(function(s,k){s.classList.toggle('active',k===i);});
+    var sn=slides[i].querySelector('.sn');
+    notes.innerHTML='<b>Dia '+(i+1)+'/'+slides.length+'</b> · '+(sn?sn.innerHTML:'');
+    bar.style.width=((i+1)/slides.length*100)+'%';
+    history.replaceState(null,'','#'+(i+1));
+  }
+  function toggleNotes(){showNotes=!showNotes;notes.classList.toggle('on',showNotes);fit();}
+  function full(){ if(!document.fullscreenElement){(document.documentElement.requestFullscreen||function(){}).call(document.documentElement);} else {document.exitFullscreen();} }
+  function printHandout(){
+    var css=document.querySelector('style').textContent;
+    var html='';
+    slides.forEach(function(s,k){
+      var c=s.cloneNode(true); c.classList.add('active');
+      var sn=c.querySelector('.sn'); var nt=sn?sn.innerHTML:''; if(sn) sn.remove();
+      html+='<div class="pg"><div class="wrap">'+c.outerHTML+'</div><div class="pn">'+nt+'</div></div>';
+    });
+    var w=window.open('','_blank');
+    if(!w){alert('Pop-up geblokkeerd: sta pop-ups toe om te printen.');return;}
+    w.document.write('<!DOCTYPE html><html lang="nl"><head><meta charset="utf-8"><title>Handout – Van regelwijziging naar kantoorproces</title><style>'+css+
+      'body{background:#fff;overflow:visible}@page{size:A4 portrait;margin:12mm}.pg{page-break-after:always;break-after:page}.wrap{width:1280px;height:720px;transform:scale(.58);transform-origin:top left;margin-bottom:-300px;position:relative}.slide{position:relative;display:flex;box-shadow:none;border:1px solid #ccc;height:720px}.pn{font-size:12pt;line-height:1.45;margin-top:8mm;border-top:2px solid #E8741E;padding-top:4mm}</style></head><body>'+html+
+      '<script>window.onload=function(){setTimeout(function(){window.print();},300)}<\/script></body></html>');
+    w.document.close();
+  }
+  document.getElementById('bPrev').onclick=function(){go(i-1)};
+  document.getElementById('bNext').onclick=function(){go(i+1)};
+  document.getElementById('bNotes').onclick=toggleNotes;
+  document.getElementById('bPrint').onclick=printHandout;
+  document.getElementById('bFull').onclick=full;
+  document.addEventListener('keydown',function(e){
+    if(e.target.tagName==='INPUT')return;
+    var k=e.key;
+    if(k==='ArrowRight'||k==='PageDown'||k===' '){e.preventDefault();go(i+1);}
+    else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();go(i-1);}
+    else if(k==='Home')go(0); else if(k==='End')go(slides.length-1);
+    else if(k==='n'||k==='N')toggleNotes();
+    else if(k==='p'||k==='P')printHandout();
+    else if(k==='f'||k==='F')full();
+  });
+  var x0=null;
+  document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>50)go(dx<0?i+1:i-1);x0=null;});
+  window.addEventListener('resize',fit);
+  fit(); go(i);
+})();
+</script>
+</body>
+</html>
