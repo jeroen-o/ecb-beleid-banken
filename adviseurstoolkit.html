@@ -23,6 +23,23 @@ nav button{background:transparent;color:#c9d6e6;border:0;border-radius:8px 8px 0
 nav button[aria-selected="true"]{background:var(--bg);color:var(--navy)}
 main{max-width:1180px;margin:0 auto;padding:20px 16px 60px}
 .tab{display:none}.tab.on{display:block}
+.mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mat{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--navy);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column}
+.mat.c{border-top-color:#C00000}.mat.g{border-top-color:var(--green)}.mat.o{border-top-color:var(--orange)}
+.mat h3{margin:0 0 4px;font-size:17px}
+.mat p{margin:0 0 10px;font-size:14.5px;color:var(--mute);flex:1}
+.mat .row{gap:6px}
+.mat a.b,.mat button.b{font-size:13.5px;padding:6px 11px;text-decoration:none;display:inline-block}
+.lbl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C00000;margin:22px 0 8px}
+.steps{counter-reset:st;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:st;position:relative;padding:8px 0 8px 44px;border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(st);position:absolute;left:0;top:8px;width:30px;height:30px;border-radius:50%;background:#17365D;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.cal td,.cal th{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:14.5px}
+.cal th{background:#17365D;color:#fff}
+.cal{border-collapse:collapse;width:100%}
+.chk label{display:flex;gap:8px;font-weight:400;padding:4px 0;font-size:15px}
+@media (max-width:900px){.mgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.mgrid{grid-template-columns:1fr}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:16px}
 h2{color:var(--navy);margin:0 0 6px;font-size:22px}
 h3{color:var(--navy);margin:14px 0 6px;font-size:18px}
@@ -36,6 +53,9 @@ input[type=color]{width:56px;height:38px;border:1px solid var(--line);border-rad
 button.b{background:#17365D;color:#fff;border:0;border-radius:6px;padding:8px 14px;font:600 14.5px Calibri,Carlito,Arial,sans-serif;cursor:pointer}
 button.b.alt{background:transparent;color:var(--navy);border:1px solid var(--navy)}
 button.b.red{background:#C00000}
+a.b{display:inline-block;background:#17365D;color:#fff;border:1px solid #17365D;border-radius:6px;padding:8px 14px;font:600 14.5px Calibri,Carlito,Arial,sans-serif;text-decoration:none}
+a.b.alt{background:transparent;color:var(--navy);border-color:var(--navy)}
+a.b:hover,button.b:hover{filter:brightness(1.12)}
 .afm{border-left:5px solid var(--orange);background:#fff6ee;color:#3d2a14;padding:10px 14px;border-radius:0 8px 8px 0;font-size:14.5px;line-height:1.45;margin:10px 0}
 .afm b{color:#9a4b0c}
 .ok{border-left:5px solid var(--green);background:#eef7ee;color:#1d3d1d;padding:10px 14px;border-radius:0 8px 8px 0;font-size:14.5px}
@@ -86,7 +106,8 @@ button.b.red{background:#C00000}
   <h1>Adviseurstoolkit · hypotheek vanaf 52 jaar</h1>
   <p>Eerste doelgroep: klanten van 50 tot en met 57 jaar · informatieronde november 2026, organisatie DFO BV</p>
   <nav role="tablist">
-    <button role="tab" data-t="t1" aria-selected="true">① Kantoorgegevens</button>
+    <button role="tab" data-t="t0" aria-selected="true">★ Alle materialen</button>
+    <button role="tab" data-t="t1" aria-selected="false">① Kantoorgegevens</button>
     <button role="tab" data-t="t2" aria-selected="false">② LinkedIn-campagne</button>
     <button role="tab" data-t="t3" aria-selected="false">③ Klantvragen: jaarlijkse update &amp; nazorgscan</button>
     <button role="tab" data-t="t4" aria-selected="false">④ Klanttekst 52+</button>
@@ -95,8 +116,71 @@ button.b.red{background:#C00000}
 </div></header>
 
 <main>
+<!-- ============ TAB 0: overzicht ============ -->
+<section class="tab on" id="t0">
+  <div class="card">
+    <h2>Alle marketing- en klantmaterialen op één plek</h2>
+    <p class="muted">Voor de aanpak van je eerste doelgroep, klanten van 50 tot en met 57 jaar. Begin bij stap 1; daarna zijn alle materialen gevuld met je eigen logo en gegevens.</p>
+    <ol class="steps" style="margin-top:10px">
+      <li><b>Vul je kantoorgegevens in</b> (logo, naam, URL, telefoon, e-mail). <a href="#gegevens" data-go="t1">Naar kantoorgegevens →</a></li>
+      <li><b>Kies je materialen</b> hieronder: LinkedIn, nieuwsbrief, klanttekst, nazorgscan</li>
+      <li><b>Laat je compliance officer meekijken</b> en loop de checklist onderaan door</li>
+      <li><b>Plan je campagne</b> met de kalender en leg alle verzendingen vast in je dossier</li>
+    </ol>
+  </div>
+
+  <div class="lbl">Voor je klanten · marketing</div>
+  <div class="mgrid">
+    <div class="mat c"><h3>LinkedIn-campagne</h3><p>7 posts in 4 weken, inclusief een poll, met beelden als PNG met je eigen logo (vierkant, liggend of staand).</p><div class="row"><button class="b" data-go="t2" type="button">Open</button></div></div>
+    <div class="mat c"><h3>Nieuwsbrief</h3><p>Hoofdartikel (± 400 woorden), kort blok (± 120 woorden) en een persoonlijke mailing voor 50–57 jaar, met onderwerpregels en preheader.</p><div class="row"><button class="b" data-go="t5" type="button">Open</button></div></div>
+    <div class="mat c"><h3>Klanttekst "Hypotheek vanaf 52 jaar"</h3><p>Webpagina met veelgestelde vragen voor je website. Kopieer als tekst of HTML, of print als PDF.</p><div class="row"><button class="b" data-go="t4" type="button">Open</button></div></div>
+    <div class="mat g"><h3>Jaarlijkse informatie-update</h3><p>5 kernvragen voor je hele portefeuille. Te versturen als e-mail, vragenlijst of print-formulier.</p><div class="row"><button class="b" data-go="t3" data-mode="kort" type="button">Open</button></div></div>
+    <div class="mat g"><h3>Nazorgscan hypotheken</h3><p>22 vragen in 8 rubrieken voor de doelgroep 50–57 en klanten met signalen. Vragen zelf aan te vinken.</p><div class="row"><button class="b" data-go="t3" data-mode="lang" type="button">Open</button></div></div>
+    <div class="mat g"><h3>Blinqx Actiefbeheerscan</h3><p>Slim formulier dat de klant zelf invult. De antwoorden komen gestructureerd terug, zodat je kunt selecteren en prioriteren. Voor Blinqx-gebruikers komt er een training van een dagdeel.</p><div class="row"><a class="b" href="https://actiefbeheerscan.nl" target="_blank" rel="noopener">Website</a><a class="b alt" href="https://formulier.actiefbeheerscan.nl/s/PzSDxcFYAsLw6jCq" target="_blank" rel="noopener">Voorbeeld</a></div></div>
+    <div class="mat o"><h3>Gesprekshulp "Hypotheek straks"</h3><p>NVHP-tool voor de klant: kan ik straks nog doorstromen of mijn hypotheek verlengen? Een verkenning, geen advies.</p><div class="row"><a class="b" href="https://jeroen-o.github.io/Kan-ik-straks-nog-doorstromen-of-mijn-hypotheek-verlengen-/index.html" target="_blank" rel="noopener">Open tool</a></div></div>
+    <div class="mat o"><h3>Klantlinks</h3><p>Voor in je mails en gesprekken: eigen AOW-datum (SVB) en pensioenopbouw (mijnpensioenoverzicht.nl).</p><div class="row"><a class="b" href="https://www.svb.nl" target="_blank" rel="noopener">svb.nl</a><a class="b alt" href="https://www.mijnpensioenoverzicht.nl" target="_blank" rel="noopener">Pensioen</a></div></div>
+    <div class="mat o"><h3>DFO standaarddocumenten</h3><p>Klanttekst onderhoud en nazorg, OTD-paragraaf, brief over abonnement, mail bij wezenlijke wijziging, machtiging incasso. Via DFO BV; compliancevragen via DFO Compliance.</p><div class="row"><a class="b" href="mailto:info@dfobv.nl">DFO BV</a><a class="b alt" href="mailto:info@dfocompliance.nl">DFO Compliance</a></div></div>
+  </div>
+
+  <div class="lbl">Voor je kantoor · bedrijfsvoering</div>
+  <div class="mgrid">
+    <div class="mat"><h3>Presentatie Dennes Roes</h3><p>De zeven vragen over bedrijfsvoering, met cijfers en sprekersnotities. Ook te printen als handout.</p><div class="row"><a class="b" href="index.html" target="_blank" rel="noopener">Open</a></div></div>
+    <div class="mat"><h3>Doelgroep in cijfers</h3><p>± 680.000 huishoudens van 50–57 met een hypotheek; per 1.000 klanten ± 175.</p><div class="row"><a class="b" href="index.html#5" target="_blank" rel="noopener">Dia 5</a><a class="b alt" href="index.html#4" target="_blank" rel="noopener">Alle 45+</a></div></div>
+    <div class="mat"><h3>Kader: moet of mag?</h3><p>Art. 4:20 lid 3 Wft tegenover je eigen nazorgafspraak en de zorgnorm.</p><div class="row"><a class="b" href="index.html#7" target="_blank" rel="noopener">Dia 7</a></div></div>
+    <div class="mat"><h3>Prioriteringsmodel</h3><p>Puntenmodel: prio 1 vóór 1 januari, prio 2 vóór maart 2027.</p><div class="row"><a class="b" href="index.html#11" target="_blank" rel="noopener">Dia 11</a></div></div>
+    <div class="mat"><h3>Taakverdeling en vastlegging</h3><p>Wie doet wat op kantoor, een contactlog, en 3 contactmomenten als de klant niet reageert.</p><div class="row"><a class="b" href="index.html#12" target="_blank" rel="noopener">Taken</a><a class="b alt" href="index.html#13" target="_blank" rel="noopener">Vastleggen</a></div></div>
+    <div class="mat"><h3>Vergoedingsmodellen</h3><p>Abonnement (Basis/Rust/Pro/Plus), vaste fee, uurtarief en uitbesteding door de geldverstrekker.</p><div class="row"><a class="b" href="index.html#14" target="_blank" rel="noopener">Dia 14</a></div></div>
+  </div>
+
+  <div class="lbl">Achtergrond en bronnen</div>
+  <div class="mgrid">
+    <div class="mat"><h3>NVHP · ECB-beleid hypotheken</h3><p>Verwachte maatregelen, tijdlijn en adviezen voor adviseurs.</p><div class="row"><a class="b alt" href="https://www.hypothecairplanner.nl/themas/ecb-beleid-hypotheken" target="_blank" rel="noopener">Lees</a></div></div>
+    <div class="mat"><h3>NVHP · Onderhoud en nazorg</h3><p>Wft-kader, wettelijke en afgesproken diensten, abonnementen, dossiervorming.</p><div class="row"><a class="b alt" href="https://www.hypothecairplanner.nl/themas/onderhoud-en-nazorg" target="_blank" rel="noopener">Lees</a></div></div>
+    <div class="mat"><h3>Rabobank · nieuw beleid</h3><p>Pensioen 15 jaar vooraf en levensverwachting, per maart 2027.</p><div class="row"><a class="b alt" href="https://www.rabobank.nl/particulieren/hypotheek/nieuw-beleid" target="_blank" rel="noopener">Lees</a></div></div>
+  </div>
+
+  <div class="lbl">Campagnekalender · voorstel</div>
+  <div class="card tw">
+    <table class="cal" id="cal"></table>
+    <p class="muted" style="margin-top:8px">De data volgen de startdatum in het tabblad LinkedIn-campagne. Pas de planning aan op je capaciteit (zie het prioriteringsmodel).</p>
+  </div>
+
+  <div class="lbl">Checklist vóór publicatie</div>
+  <div class="card chk">
+    <label><input type="checkbox"> Kantoorgegevens, AFM- en Kifid-nummer zijn ingevuld en kloppen</label>
+    <label><input type="checkbox"> "Kosteloos" staat er alleen als het kennismakingsgesprek echt kosteloos is</label>
+    <label><input type="checkbox"> Het bankbeleid (Rabobank/Obvion, maart 2027) is gecontroleerd en de datum bijgewerkt</label>
+    <label><input type="checkbox"> Dienstverleningsdocument (OTD) en tarievenkaart passen bij wat je communiceert</label>
+    <label><input type="checkbox"> De mailing gaat alleen naar klanten (of mensen met toestemming), met een afmeldlink in commerciële mail</label>
+    <label><input type="checkbox"> De selectie op leeftijd staat in je verwerkingsregister (gerechtvaardigd belang: nazorg)</label>
+    <label><input type="checkbox"> De compliance officer heeft de teksten getoetst</label>
+    <label><input type="checkbox"> Verzending, herinnering en (uitblijvende) reactie worden vastgelegd in het dossier</label>
+    <p class="muted" style="margin-top:6px">⚠ Deze checklist is een hulpmiddel en vervangt geen compliancetoets. Vinkjes worden niet bewaard.</p>
+  </div>
+</section>
+
 <!-- ============ TAB 1 ============ -->
-<section class="tab on" id="t1">
+<section class="tab" id="t1">
   <div class="card">
     <h2>Jouw kantoorgegevens</h2>
     <p class="muted">Vul je gegevens één keer in. Ze worden automatisch verwerkt in de LinkedIn-posts, de beelden, de klantvragen en de klanttekst.</p>
@@ -221,12 +305,18 @@ function printHtml(title,body,extraCss){
 
 /* ---------- tabs ---------- */
 var tabs=document.querySelectorAll('nav button');
-tabs.forEach(function(b){b.onclick=function(){
-  tabs.forEach(function(x){x.setAttribute('aria-selected',x===b?'true':'false')});
-  document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('on',t.id===b.dataset.t)});
-  if(b.dataset.t==='t2')renderPosts();
+var HASH={t0:'overzicht',t1:'gegevens',t2:'linkedin',t3:'klantvragen',t4:'klanttekst',t5:'nieuwsbrief'};
+function show(id,noHash){
+  tabs.forEach(function(x){x.setAttribute('aria-selected',x.dataset.t===id?'true':'false')});
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('on',t.id===id)});
+  if(id==='t2')renderPosts(); if(id==='t0')renderCal();
+  if(!noHash)history.replaceState(null,'','#'+HASH[id]);
   window.scrollTo(0,0);
-}});
+}
+tabs.forEach(function(b){b.onclick=function(){show(b.dataset.t)}});
+document.addEventListener('click',function(e){var g=e.target.closest('[data-go]');if(!g)return;e.preventDefault();
+  if(g.dataset.mode){var mb=document.querySelector('#qmode button[data-m="'+g.dataset.mode+'"]');if(mb)mb.click()}
+  show(g.dataset.go)});
 
 /* ---------- tab 1 ---------- */
 document.querySelectorAll('[data-k]').forEach(function(el){
@@ -488,7 +578,25 @@ document.getElementById('nPrint').onclick=function(){printHtml('Nieuwsbrief – 
 
 /* ---------- render ---------- */
 function renderAll(){renderVK();renderArt();renderNL();if(document.getElementById('t2').classList.contains('on'))renderPosts()}
-renderAll();renderQ();
+function renderCal(){
+  var st=new Date(sd.value+'T12:00:00');if(isNaN(st))st=startDefault();
+  function d(n){var x=new Date(st);x.setDate(x.getDate()+n);return x.toLocaleDateString('nl-NL',{day:'numeric',month:'short'})}
+  var R=[
+   [0,'Week 1','Nieuwsbrief (hoofdartikel) naar alle klanten · LinkedIn post 1 en 2','Breed informeren, geruststellen','t5'],
+   [7,'Week 2','Persoonlijke mailing + nazorgscan naar 50–57 · LinkedIn post 3 en 4','Uitvragen, plannen in beeld','t3'],
+   [14,'Week 3','Prio 1 bellen · LinkedIn post 5 (jaarlijkse check) · klanttekst live op je website','Gesprekken plannen','t4'],
+   [21,'Week 4','Herinnering aan wie niet reageerde · LinkedIn post 6','Tweede contactmoment','t3'],
+   [28,'Week 5','LinkedIn poll · prio 2 bellen bij signalen','Interactie, opvolgen','t2'],
+   [42,'Week 7','Afsluitende brief bij geen reactie · kort blok in de volgende nieuwsbrief','Vastleggen, borgen','t5'],
+   [null,'Vóór maart 2027','Adviestrajecten afronden, aanvragen vóór de ingangsdatum bij de betreffende geldverstrekker','Advies','']
+  ];
+  var h='<tr><th>Wanneer</th><th>Wat</th><th>Doel</th><th></th></tr>';
+  R.forEach(function(r){h+='<tr><td><b>'+r[1]+'</b>'+(r[0]!==null?'<br><span class="muted">vanaf '+d(r[0])+'</span>':'')+'</td><td>'+esc(r[2])+'</td><td class="muted">'+esc(r[3])+'</td><td>'+(r[4]?'<button class="b alt" style="font-size:13px;padding:4px 10px" data-go="'+r[4]+'" type="button">Open</button>':'')+'</td></tr>'});
+  document.getElementById('cal').innerHTML=h;
+}
+sd.addEventListener('input',renderCal);
+renderAll();renderQ();renderCal();
+(function(){var h=location.hash.replace('#','');for(var k in HASH){if(HASH[k]===h){show(k,true);break}}})();
 })();
 </script>
 </body>
