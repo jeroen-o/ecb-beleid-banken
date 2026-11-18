@@ -79,6 +79,12 @@ a.b:hover,button.b:hover{filter:brightness(1.12)}
 .q{display:grid;grid-template-columns:24px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid var(--line)}
 .q:last-child{border-bottom:0}
 .q small{display:block;color:var(--mute)}
+.q input{align-self:start;margin-top:4px}
+.opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.opt{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:2px 10px;font-size:13.5px}
+.vv{display:block;margin-top:8px;padding-left:12px;border-left:3px solid var(--line);font-size:15px}
+.sig{display:block;margin-top:6px;font-size:13.5px;color:var(--mute)}
+.info52{background:var(--sky);border-left:4px solid #17365D;border-radius:0 8px 8px 0;padding:10px 14px;margin:6px 0 10px;font-size:15px}
 .sec h3{margin-top:4px}
 .seg{display:inline-flex;border:1px solid var(--navy);border-radius:8px;overflow:hidden}
 .seg button{border:0;background:transparent;color:var(--navy);padding:8px 14px;font:600 14.5px Calibri,Carlito,Arial,sans-serif;cursor:pointer}
@@ -153,7 +159,7 @@ a.b:hover,button.b:hover{filter:brightness(1.12)}
     <div class="mat c"><h3>LinkedIn-campagne</h3><p>7 posts in 4 weken, inclusief een poll, met beelden als PNG met je eigen logo (vierkant, liggend of staand).</p><div class="row"><button class="b" data-go="t2" type="button">Open</button></div></div>
     <div class="mat c"><h3>Nieuwsbrief</h3><p>Hoofdartikel (± 400 woorden), kort blok (± 120 woorden) en een persoonlijke mailing voor 50–57 jaar, met onderwerpregels en preheader.</p><div class="row"><button class="b" data-go="t5" type="button">Open</button></div></div>
     <div class="mat c"><h3>Klanttekst "Hypotheek vanaf 52 jaar"</h3><p>Webpagina met veelgestelde vragen voor je website. Kopieer als tekst of HTML, of print als PDF.</p><div class="row"><button class="b" data-go="t4" type="button">Open</button></div></div>
-    <div class="mat g"><h3>Jaarlijkse informatie-update</h3><p>5 kernvragen voor je hele portefeuille. Te versturen als e-mail, vragenlijst of print-formulier.</p><div class="row"><button class="b" data-go="t3" data-mode="kort" type="button">Open</button></div></div>
+    <div class="mat g"><h3>Stappenscan 52+ en jaarlijkse update</h3><p>Opzet zoals de Actiefbeheerscan (11 stappen, met vervolgvragen en signalen), inclusief de vraag "pensioen telt eerder mee". Of de korte update met 5 kernvragen voor je hele portefeuille. Te versturen als e-mail, vragenlijst of print-formulier.</p><div class="row"><button class="b" data-go="t3" data-mode="scan" type="button">Open</button></div></div>
     <div class="mat g"><h3>Nazorgscan hypotheken</h3><p>22 vragen in 8 rubrieken voor de doelgroep 50–57 en klanten met signalen. Vragen zelf aan te vinken.</p><div class="row"><button class="b" data-go="t3" data-mode="lang" type="button">Open</button></div></div>
     <div class="mat g"><h3>Blinqx Actiefbeheerscan</h3><p>Slim formulier dat de klant zelf invult. De antwoorden komen gestructureerd terug, zodat je kunt selecteren en prioriteren. Voor Blinqx-gebruikers komt er een training van een dagdeel.</p><div class="row"><a class="b" href="https://actiefbeheerscan.nl" target="_blank" rel="noopener">Website</a><a class="b alt" href="https://formulier.actiefbeheerscan.nl/s/PzSDxcFYAsLw6jCq" target="_blank" rel="noopener">Voorbeeld</a></div></div>
     <div class="mat o"><h3>Gesprekshulp "Hypotheek straks"</h3><p>NVHP-tool voor de klant: kan ik straks nog doorstromen of mijn hypotheek verlengen? Een verkenning, geen advies.</p><div class="row"><a class="b" href="https://jeroen-o.github.io/Kan-ik-straks-nog-doorstromen-of-mijn-hypotheek-verlengen-/index.html" target="_blank" rel="noopener">Open tool</a></div></div>
@@ -259,7 +265,7 @@ a.b:hover,button.b:hover{filter:brightness(1.12)}
     <h2>Klantvragen: jaarlijkse informatie-update en nazorgscan hypotheken</h2>
     <p class="muted">Gebruik de <b>jaarlijkse update</b> (5 kernvragen) voor je hele portefeuille, en de <b>nazorgscan</b> (uitgebreid) voor de eerste doelgroep van 50 tot en met 57 jaar en voor klanten met signalen. Vink aan wat je wilt meesturen.</p>
     <div class="row" style="margin:12px 0">
-      <div class="seg" id="qmode"><button data-m="kort" class="on" type="button">Jaarlijkse update (5 vragen)</button><button data-m="lang" type="button">Nazorgscan (uitgebreid)</button></div>
+      <div class="seg" id="qmode"><button data-m="scan" class="on" type="button">Stappenscan 52+ (11 stappen)</button><button data-m="kort" type="button">Jaarlijkse update (5 vragen)</button><button data-m="lang" type="button">Nazorgscan (uitgebreid)</button></div>
       <button class="b alt" id="qAll" type="button">Alles aan/uit</button>
     </div>
     <div class="row">
@@ -488,29 +494,57 @@ var LANG=[
   ['Hoe wilt u het liefst contact?','Telefoon, e-mail, videobellen, op kantoor'],
   ['Mogen wij uw antwoorden vastleggen in uw klantdossier?','Om u goed van dienst te kunnen zijn']]}
 ];
-var qmode='kort';var qOff={};
+var INFO52='Een aantal geldverstrekkers, waaronder Rabobank en Obvion (vanaf maart 2027), houdt bij een hypotheekaanvraag al 15 jaar vóór uw AOW-leeftijd rekening met uw pensioeninkomen. Bij een AOW-leeftijd van 67 is dat vanaf 52 jaar. Omdat het pensioen bij de meeste mensen lager is dan het huidige inkomen, kan uw maximale hypotheek daardoor lager uitvallen. Dit geldt bij een nieuwe hypotheek, een verhoging of oversluiten. Uw huidige hypotheek verandert niet.';
+var SCAN=[
+ {s:'Stap 1 · Inkomen',q:[{v:'Is het (gezamenlijk) inkomen veranderd?',o:['Nee','Ja'],sig:'Verlaagd',vv:{als:'Ja',v:'Het inkomen is nu…',o:['Verhoogd','Verlaagd','Anders, namelijk: …']}}]},
+ {s:'Stap 2 · Hypotheek',q:[{v:'Is de hypotheek aangepast?',o:['Nee','Ja'],vv:{als:'Ja',v:'Wat is er anders?',o:['De hypotheek is verhoogd (extra lening)','Er is extra afgelost','De hypotheekvorm is gewijzigd','Anders, namelijk: …']}}]},
+ {s:'Stap 3 · Woning',q:[{v:'Is er iets veranderd in uw woonsituatie?',o:['Nee','Ja'],vv:{als:'Ja',v:'Wat is er veranderd?',o:['Ik heb verbouwd','Ik heb verduurzaamd','Ik ben verhuisd','Anders, namelijk: …']}}]},
+ {s:'Stap 4 · Gezinssituatie',q:[{v:'Is uw gezinssituatie veranderd?',o:['Nee','Ja'],sig:'Ja',vv:{als:'Ja',v:'Wat is er veranderd?',o:['Een partner is ingetrokken (samenwonen)','Huwelijk of geregistreerd partnerschap','Er is een kind geboren','Scheiding','Overlijden van mijn partner','De kinderen zijn uit huis','Anders, namelijk: …']}}]},
+ {s:'Stap 5 · Pensioen telt eerder mee',info:INFO52,q:[{v:'Was u hiervan op de hoogte?',o:['Ja','Nee'],vv:{als:'altijd',v:'Wilt u weten wat dit voor uw situatie betekent?',o:['Ja, graag','Nee, nu niet'],sig:'Ja, graag'}}]},
+ {s:'Stap 6 · Pensioen en AOW',q:[
+   {v:'Weet u hoe hoog uw pensioen (en dat van uw partner) ongeveer wordt?',t:'Bekijk het op mijnpensioenoverzicht.nl',o:['Ja, ik heb een recent overzicht','Ongeveer','Nee, nog niet bekeken'],sig:'Nee, nog niet bekeken'},
+   {v:'Overweegt u eerder te stoppen met werken of minder te gaan werken?',o:['Nee','Ja'],sig:'Ja',vv:{als:'Ja',v:'Rond welke leeftijd?',open:true}}]},
+ {s:'Stap 7 · Rentevaste periode en aflossing',q:[
+   {v:'Wanneer loopt uw rentevaste periode af?',o:['Binnen 2 jaar','Over 2 tot 5 jaar','Later','Weet ik niet'],sig:'Binnen 2 jaar · Weet ik niet'},
+   {v:'Heeft u een aflossingsvrij deel in uw hypotheek?',o:['Nee','Ja','Weet ik niet'],vv:{als:'Ja',v:'Heeft u een plan om dat aan het einde van de looptijd af te lossen?',o:['Ja, met spaargeld of beleggingen','Ja, door de woning te verkopen','Nog geen plan'],sig:'Nog geen plan'}}]},
+ {s:'Stap 8 · Wensen',q:[{v:'Welke wensen heeft u voor de toekomst?',t:'Meerdere antwoorden zijn mogelijk',meer:true,o:['Verhuizen naar een andere woning','Kleiner of gelijkvloers wonen','De huidige woning verbouwen of aanpassen','Verduurzamen','(Eerder) stoppen met werken','De woonlasten verlagen','Extra aflossen op de hypotheek','Geld vrijmaken uit de overwaarde','Kinderen financieel helpen','Geen specifieke wensen','Anders, namelijk: …'],sig:'Elke wens behalve "geen"',vv:{als:'een wens',v:'Wanneer wilt u dit realiseren?',o:['Binnen 2 jaar','Over 2 tot 5 jaar','Later'],sig:'Binnen 5 jaar'}}]},
+ {s:'Stap 9 · Overige vragen',q:[{v:'Zijn er andere (financiële) vragen waarbij wij u mogen helpen?',open:true}]},
+ {s:'Stap 10 · Contact',q:[{v:'Wilt u dat wij contact met u opnemen?',o:['Ja, graag','Nee, nu niet'],sig:'Ja, graag',vv:{als:'Ja, graag',v:'Hoe heeft u het liefst contact?',o:['Telefoon','E-mail','Videobellen','Op kantoor']}}]},
+ {s:'Stap 11 · Controlevragen',q:[{v:'E-mailadres',open:true},{v:'Telefoonnummer',open:true},{v:'Ik ga ermee akkoord dat mijn antwoorden worden vastgelegd in mijn klantdossier',o:['Akkoord'],meer:true}]}
+];
+function alsL(a){return a==='altijd'?'':(a==='Ja'?'Zo ja: ':'Bij "'+a+'": ')}
+function nq(q){return Array.isArray(q)?{v:q[0],t:q[1]}:q}
+var qmode='scan';var qOff={};
 document.querySelectorAll('#qmode button').forEach(function(b){b.onclick=function(){qmode=b.dataset.m;document.querySelectorAll('#qmode button').forEach(function(x){x.classList.toggle('on',x===b)});renderQ()}});
-function curQ(){return qmode==='kort'?KORT:LANG}
-function selected(){var out=[];curQ().forEach(function(sec,si){var qs=sec.q.filter(function(q,qi){return !qOff[qmode+si+'_'+qi]});if(qs.length)out.push({s:sec.s,q:qs})});return out}
+function curQ(){return qmode==='scan'?SCAN:(qmode==='kort'?KORT:LANG)}
+function selected(){var out=[];curQ().forEach(function(sec,si){var qs=sec.q.filter(function(q,qi){return !qOff[qmode+si+'_'+qi]}).map(nq);if(qs.length)out.push({s:sec.s,info:sec.info,q:qs})});return out}
+function optsHtml(o,meer){return '<span class="opts">'+o.map(function(x){return '<span class="opt">'+(meer?'☐ ':'○ ')+esc(x)+'</span>'}).join('')+'</span>'}
 function renderQ(){
-  var h='';curQ().forEach(function(sec,si){h+='<div class="card sec"><h3>'+esc(sec.s)+'</h3>';sec.q.forEach(function(q,qi){var id=qmode+si+'_'+qi;
-    h+='<label class="q" style="font-weight:400"><input type="checkbox" data-q="'+id+'"'+(qOff[id]?'':' checked')+'><span>'+esc(q[0])+(q[1]?'<small>'+esc(q[1])+'</small>':'')+'</span></label>'});h+='</div>'});
+  var h='';
+  if(qmode==='scan')h+='<div class="card" style="border-left:5px solid var(--green)"><p style="margin:0"><b>Opzet zoals de Blinqx Actiefbeheerscan:</b> per stap één hoofdvraag (meestal ja/nee). Bij "ja" volgt een vervolgvraag. Stap 5 t/m 7 zijn nieuw voor de doelgroep 50–57. <span class="pill">signaal</span> = aanleiding om te bellen.</p></div>';
+  curQ().forEach(function(sec,si){h+='<div class="card sec"><h3>'+esc(sec.s)+'</h3>'+(sec.info?'<div class="info52">'+esc(sec.info)+'</div>':'');sec.q.forEach(function(q0,qi){var q=nq(q0);var id=qmode+si+'_'+qi;
+    h+='<label class="q" style="font-weight:400"><input type="checkbox" data-q="'+id+'"'+(qOff[id]?'':' checked')+'><span><b style="font-weight:600">'+esc(q.v)+'</b>'+(q.t?'<small>'+esc(q.t)+'</small>':'')+(q.o?optsHtml(q.o,q.meer):'')+(q.open?'<span class="opts"><span class="opt">✎ open antwoord</span></span>':'')+(q.sig?'<span class="sig"><span class="pill">signaal</span> '+esc(q.sig)+'</span>':'')+
+    (q.vv?'<span class="vv">↳ '+(q.vv.als==='altijd'?'':'Bij "'+esc(q.vv.als)+'": ')+'<b style="font-weight:600">'+esc(q.vv.v)+'</b>'+(q.vv.o?optsHtml(q.vv.o,q.vv.meer):'')+(q.vv.open?'<span class="opts"><span class="opt">✎ open antwoord</span></span>':'')+(q.vv.sig?'<span class="sig"><span class="pill">signaal</span> '+esc(q.vv.sig)+'</span>':'')+'</span>':'')+'</span></label>'});h+='</div>'});
+  if(qmode==='scan')h+='<div class="card"><h3 style="margin-top:0">Selectieregel voor opvolging</h3><p style="margin:0">Bel binnen 2 weken bij <b>50–57 jaar + een wens binnen 5 jaar</b>, <b>"Ja, graag" bij stap 5 of 10</b>, <b>aflossingsvrij zonder aflossingsplan</b> of <b>rentevaste periode binnen 2 jaar</b>. Dit sluit aan op het prioriteringsmodel in de presentatie (dia 11).</p></div>';
   var box=document.getElementById('qbox');box.innerHTML=h;
   box.querySelectorAll('[data-q]').forEach(function(cb){cb.onchange=function(){qOff[cb.dataset.q]=!cb.checked}});
 }
 document.getElementById('qAll').onclick=function(){var any=false;curQ().forEach(function(sec,si){sec.q.forEach(function(q,qi){if(!qOff[qmode+si+'_'+qi])any=true})});
   curQ().forEach(function(sec,si){sec.q.forEach(function(q,qi){qOff[qmode+si+'_'+qi]=any})});renderQ()};
-function qText(numbered){var n=0,t='';selected().forEach(function(sec){t+='\n'+sec.s.toUpperCase()+'\n';sec.q.forEach(function(q){n++;t+=(numbered?n+'. ':'• ')+q[0]+(q[1]?'\n   ('+q[1]+')':'')+'\n'})});return t.trim()}
+function oTxt(o,meer){return o?'\n   '+o.map(function(x){return (meer?'[ ] ':'( ) ')+x}).join('\n   '):''}
+function qText(numbered){var n=0,t='';selected().forEach(function(sec){t+='\n'+sec.s.toUpperCase()+'\n'+(sec.info?sec.info+'\n':'');sec.q.forEach(function(q){n++;t+=(numbered?n+'. ':'• ')+q.v+(q.t?' ('+q.t+')':'')+oTxt(q.o,q.meer)+(q.open?'\n   ____________________':'')+(q.vv?'\n   → '+alsL(q.vv.als)+q.vv.v+oTxt(q.vv.o,q.vv.meer).replace(/\n   /g,'\n      ')+(q.vv.open?'\n      ____________________':''):'')+'\n'})});return t.trim()}
 document.getElementById('qList').onclick=function(){copy(qText(true),this)};
 document.getElementById('qMail').onclick=function(){
-  var titel=qmode==='kort'?'jaarlijkse informatie-update':'nazorgscan hypotheek';
+  var titel=qmode==='scan'?'hypotheekscan':(qmode==='kort'?'jaarlijkse informatie-update':'nazorgscan hypotheek');
   var t='Onderwerp: Uw '+titel+'\n\nBeste [naam klant],\n\nGraag houden wij uw hypotheek passend bij uw situatie. Daarom vragen wij u '+(qmode==='kort'?'eenmaal per jaar':'')+' een paar korte vragen te beantwoorden. Banken passen hun regels aan, en vooral als u tussen de 50 en 57 jaar bent en plannen heeft met uw woning, is het goed om dat op tijd te weten.\n\n'+qText(true)+'\n\n'+(S.scan?'U kunt de vragen ook online beantwoorden via: '+cleanUrl(S.scan)+'\n\n':'U kunt deze e-mail eenvoudig beantwoorden.\n\n')+'Blijkt uit uw antwoorden dat er aanleiding is voor een gesprek, dan nemen wij contact met u op.'+kostenZin()+'\n\nMet vriendelijke groet,\n\n'+v('adviseur','naam adviseur')+(S.functie?'\n'+S.functie:'')+'\n'+v('kantoor','kantoornaam')+'\n'+v('tel','telefoon')+' | '+v('email','e-mail')+'\n'+(S.url?cleanUrl(S.url):'[website]');
   copy(t,this)};
 document.getElementById('qPrint').onclick=function(){
-  var titel=qmode==='kort'?'Jaarlijkse informatie-update hypotheek':'Nazorgscan hypotheek';var n=0;
+  var titel=qmode==='scan'?'Hypotheekscan: is uw hypotheek nog passend?':(qmode==='kort'?'Jaarlijkse informatie-update hypotheek':'Nazorgscan hypotheek');var n=0;
   var b='<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid '+S.kleur+';padding-bottom:10px;margin-bottom:14px">'+(S.logo?'<img src="'+S.logo+'" style="max-height:54px;max-width:200px">':'<b style="font-size:20px;color:'+S.kleur+'">'+esc(v('kantoor','kantoornaam'))+'</b>')+'<div style="text-align:right;font-size:13px;color:#555">'+esc(v('kantoor','kantoornaam'))+'<br>'+esc(v('tel','telefoon'))+' · '+esc(v('email','e-mail'))+'<br>'+esc(S.url?cleanUrl(S.url):'[website]')+'</div></div>';
   b+='<h1 style="margin:0 0 4px">'+titel+'</h1><p>Naam: ____________________________ &nbsp; Datum: ______________</p>';
-  selected().forEach(function(sec){b+='<h3 style="margin:16px 0 4px">'+esc(sec.s)+'</h3>';sec.q.forEach(function(q){n++;b+='<div style="break-inside:avoid;margin-bottom:10px"><b>'+n+'. '+esc(q[0])+'</b>'+(q[1]?'<div style="color:#666;font-size:13px">'+esc(q[1])+'</div>':'')+'<div style="border-bottom:1px solid #bbb;height:22px"></div><div style="border-bottom:1px solid #bbb;height:22px"></div></div>'})});
+  function po(o,meer){return '<div style="margin:4px 0 0 14px">'+o.map(function(x){return '<div>'+(meer?'☐ ':'○ ')+esc(x)+'</div>'}).join('')+'</div>'}
+  var ln='<div style="border-bottom:1px solid #bbb;height:22px"></div>';
+  selected().forEach(function(sec){b+='<div style="break-inside:avoid"><h3 style="margin:16px 0 4px">'+esc(sec.s)+'</h3>'+(sec.info?'<div style="background:#EAF2F8;border-left:4px solid '+S.kleur+';padding:8px 12px;margin:4px 0 8px;font-size:14px">'+esc(sec.info)+'</div>':'');sec.q.forEach(function(q){n++;b+='<div style="break-inside:avoid;margin-bottom:10px"><b>'+n+'. '+esc(q.v)+'</b>'+(q.t?'<div style="color:#666;font-size:13px">'+esc(q.t)+'</div>':'')+(q.o?po(q.o,q.meer):(q.open?ln:ln+ln))+(q.vv?'<div style="margin:6px 0 0 14px"><i>'+alsL(q.vv.als)+'</i><b>'+esc(q.vv.v)+'</b>'+(q.vv.o?po(q.vv.o,q.vv.meer):ln)+'</div>':'')+'</div>'});b+='</div>'});
   b+='<p style="font-size:12px;color:#666;margin-top:20px">Uw gegevens gebruiken wij alleen voor onze dienstverlening aan u, volgens onze privacyverklaring.'+(S.afm?' AFM-vergunning '+esc(S.afm)+'.':'')+(S.kifid?' Kifid '+esc(S.kifid)+'.':'')+'</p>';
   printHtml(titel,b);
 };
