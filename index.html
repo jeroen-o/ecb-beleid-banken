@@ -73,6 +73,14 @@ a{color:var(--navy)}
 #notes.on{display:block}
 #notes b{color:var(--navy)}
 .sn{display:none}
+.bars{margin-top:10px}
+.br{display:grid;grid-template-columns:62px 1fr 82px 130px;gap:10px;align-items:center;margin-bottom:9px;font-size:16.5px}
+.bl{font-weight:700;color:var(--navy)}
+.bt{background:var(--soft);height:24px;border-radius:3px;overflow:hidden}
+.bt i{display:block;height:100%;background:var(--navy);border-radius:3px}
+.br.hot .bt i{background:var(--red)}
+.bv{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.bd{color:var(--mute);font-size:14.5px;font-variant-numeric:tabular-nums}
 @media (max-width:700px){#ctrl button{padding:6px 7px}}
 </style>
 </head>
@@ -109,6 +117,40 @@ a{color:var(--navy)}
   </div>
   <div class="foot"><span>Van regelwijziging naar kantoorproces</span><span>2</span></div>
   <div class="sn"><b>± 1 min.</b> Kort de opbouw. Benadruk: geen vaktechniek, wél organisatie. Aan het eind een concreet stappenplan tot maart 2027.</div>
+</section>
+
+<!-- 2b: cijfers -->
+<section class="slide">
+  <div class="kicker">Eerst wat cijfers</div>
+  <h1>Om hoeveel huishoudens gaat het?</h1>
+  <div class="grid3" style="margin-bottom:18px">
+    <div class="card r"><div class="big">2,62 mln</div><p style="margin-top:6px">huishoudens met hoofdkostwinner <b>45+</b> én een hypotheek op de eigen woning: <b>67%</b> van alle 3,90 mln hypotheekhouders</p></div>
+    <div class="card"><div class="big" style="color:var(--navy)">€ 495 mld</div><p style="margin-top:6px">hypotheekschuld bij 45+: <b>59%</b> van de totale schuld van € 843 mld</p></div>
+    <div class="card o"><div class="big" style="color:var(--orange)">78%</div><p style="margin-top:6px">van de 3,36 mln eigenwoningbezitters van 45+ heeft nog een hypotheek</p></div>
+  </div>
+  <div class="grid2" style="grid-template-columns:1.25fr 1fr">
+    <div>
+      <h2>Huishoudens met hypotheek, naar leeftijd hoofdkostwinner</h2>
+      <div class="bars">
+        <div class="br"><span class="bl">45–55</span><span class="bt"><i style="width:96.5%"></i></span><span class="bv">837.400</span><span class="bd">gem. € 247.700</span></div>
+        <div class="br hot"><span class="bl">55–65</span><span class="bt"><i style="width:100%"></i></span><span class="bv">867.800</span><span class="bd">gem. € 192.200</span></div>
+        <div class="br"><span class="bl">65–75</span><span class="bt"><i style="width:63.9%"></i></span><span class="bv">554.200</span><span class="bd">gem. € 142.500</span></div>
+        <div class="br"><span class="bl">75–85</span><span class="bt"><i style="width:35.3%"></i></span><span class="bv">306.300</span><span class="bd">gem. € 119.500</span></div>
+        <div class="br"><span class="bl">85+</span><span class="bt"><i style="width:6.7%"></i></span><span class="bv">58.500</span><span class="bd">gem. € 95.100</span></div>
+      </div>
+      <p class="small">gem. = gemiddelde hypotheekschuld per huishouden mét hypotheek. Aantallen zijn huishoudens, geen personen.</p>
+    </div>
+    <div class="card" style="align-self:start">
+      <h2>Wat betekent dit voor jouw portefeuille?</h2>
+      <ul>
+        <li><b>1,7 mln</b> huishoudens tussen 45 en 65: zij komen in de komende 15 jaar bij de pensioentoets</li>
+        <li>Bij 65+ heeft volgens de AFM <b>± 94%</b> (deels) aflossingsvrij: zo'n <b>0,86 mln</b> huishoudens</li>
+        <li>Volgens AFM- en DNB-schattingen kunnen <b>23.000 tot 78.000</b> oudere huishoudens in de knel komen bij herfinanciering</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>Bron: CBS StatLine 83834NED, stand 1-1-2025 (voorlopig), particuliere huishoudens naar leeftijd hoofdkostwinner · AFM/DNB via HomeFinance, Welingelichte Kringen</span><span>3</span></div>
+  <div class="sn"><b>± 2 min.</b> Twee derde van alle hypotheekhouders is 45 of ouder. Het gaat dus niet om een niche, maar om het grootste deel van je portefeuille. Let op: dit zijn <b>huishoudens</b>, geen personen. Bij stellen gaat het om twee consumenten per dossier. De gemiddelde schuld daalt met de leeftijd, maar het aandeel aflossingsvrij stijgt juist. Vraag de zaal: hoeveel procent van jouw portefeuille is 45+? Waarschijnlijk meer dan je denkt.</div>
 </section>
 
 <!-- 3 -->
@@ -385,6 +427,7 @@ a{color:var(--navy)}
 (function(){
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var deck=document.getElementById('deck'), notes=document.getElementById('notes'), bar=document.querySelector('#bar i');
+  slides.forEach(function(s,k){var f=s.querySelector('.foot span:last-child'); if(f) f.textContent=k+1;});
   var i=0, showNotes=false;
   var m=/#(\d+)/.exec(location.hash); if(m){i=Math.min(Math.max(+m[1]-1,0),slides.length-1);}
   function fit(){
