@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="only light">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Woontoekomst-check</title>
+<meta name="description" content="Blijven of gaan? Vier vragen over hoe jij later wilt wonen. Ongeveer drie minuten, geen cijfers, geen verplichtingen.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<!--site-meta-->
+<link rel="canonical" href="https://dennes-roes.nl/woontoekomst-check.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="De woontoekomst-check: blijven of gaan?">
+<meta property="og:description" content="Vier vragen over hoe jij later wilt wonen. Ongeveer drie minuten, geen cijfers, geen verplichtingen.">
+<meta property="og:url" content="https://dennes-roes.nl/woontoekomst-check.html">
+<meta property="og:image" content="https://dennes-roes.nl/og-start.jpg">
+<!--/site-meta-->
+<style>
+:root{--cream:#F3EEE5;--card:#fff;--gold:#B8893A;--gold-d:#9c7230;--navy:#1B2A4A;--ink:#1d2433;--mute:#5f6670;--line:#E9E1D2;--soft:#F2ECDF;--field:#FAF8F3;--disabled:#E6DDCF}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;color-scheme:only light}
+body{margin:0;background:var(--cream);color:var(--ink);font:17px/1.55 "Inter","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px 60px}
+.serif{font-family:"Fraunces",Georgia,Cambria,"Times New Roman",serif}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:0 18px 50px rgba(70,55,30,.10);width:100%;max-width:900px;padding:44px 52px}
+.kick{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin:0 0 14px}
+.kick:before{content:"";width:28px;height:1px;background:var(--gold)}
+h1{font-weight:600;font-size:46px;line-height:1.08;margin:0 0 16px;color:var(--navy)}
+h1 em{font-style:normal;color:var(--gold)}
+h2{font-weight:600;font-size:34px;line-height:1.15;margin:0 0 6px;color:var(--navy)}
+.lead{color:var(--mute);font-size:18px;margin:0 0 20px;max-width:640px}
+.sub{color:var(--mute);margin:0 0 22px}
+.intro{display:grid;grid-template-columns:1fr 150px;gap:36px;align-items:center}
+.photo{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 0 0 1px var(--line),0 8px 20px rgba(0,0,0,.1)}
+.house{display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--gold)}
+.house svg{width:58%;height:58%}
+.note{background:var(--soft);border-radius:14px;padding:16px 20px;margin:0 0 24px;font-size:16.5px}
+.small{color:var(--mute);font-size:14px;margin:16px 0 0}
+.btn{border:0;border-radius:999px;padding:14px 28px;font-weight:600;font-size:16.5px;font-family:inherit;cursor:pointer;min-height:52px}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:var(--gold-d)}
+.btn-gold:disabled{background:var(--disabled);color:#6b6457;cursor:not-allowed}
+.btn-ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+.prog{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 30px}
+.prog i{height:5px;border-radius:3px;background:var(--disabled)}
+.prog i.ok{background:var(--gold)}.prog i.cur{background:var(--navy)}
+.step-l{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+.opts{display:grid;gap:12px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{position:relative;display:block;border:1px solid var(--line);border-radius:14px;padding:16px 56px 16px 20px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s}
+.opt:hover{border-color:#d9c9a8}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .t{font-weight:500;font-size:17px}
+.opt .t.q{font-family:"Fraunces",Georgia,Cambria,serif;font-style:italic;font-weight:600;font-size:18px;color:var(--navy)}
+.opt .d{display:block;color:var(--mute);font-size:14.5px;margin-top:2px}
+.opt .dot{position:absolute;right:18px;top:16px;width:22px;height:22px;border-radius:50%;border:1.5px solid #d8ccb5;background:#fff}
+.opt.sel{border-color:var(--gold);background:#fffaf1}
+.opt.sel .dot{border-color:var(--gold);background:radial-gradient(circle,var(--gold) 0 5px,#fff 6px)}
+.opt.wide{grid-column:1/-1}
+.opt input:focus-visible ~ .dot{outline:3px solid #2f5f86;outline-offset:2px}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:30px}
+.sum{border:1px solid var(--line);border-radius:14px;padding:4px 20px;margin:0 0 22px}
+.sum div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #f0eadf}
+.sum div:last-child{border-bottom:0}
+.sum span{color:var(--mute)}
+.sum b{font-weight:600;text-align:right}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label.f{display:block;font-weight:700;font-size:15.5px;margin:0 0 6px;color:var(--navy)}
+label.f small{font-weight:400;color:var(--mute);font-size:15px}
+.in{width:100%;background:var(--field);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:16px;font-family:inherit;color:var(--ink)}
+.in:focus{outline:2px solid var(--gold);outline-offset:1px;background:#fff}
+textarea.in{min-height:100px;resize:vertical}
+.hint{color:var(--mute);font-size:13.5px;margin:6px 0 18px}
+.consent{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:16px 18px;cursor:pointer}
+.consent input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--gold);flex:none}
+.done{text-align:center;padding:10px 0}
+.done .photo{margin:0 auto 18px}
+.err{color:#a3241c;font-weight:600;min-height:22px;margin-top:10px}
+[hidden]{display:none!important}
+@media (max-width:720px){
+  body{padding:16px 10px 40px}
+  .card{padding:26px 20px;border-radius:18px}
+  h1{font-size:32px}h2{font-size:26px}
+  .intro{grid-template-columns:1fr}.intro .photo{order:-1;width:96px;height:96px}
+  .opts.two,.grid2{grid-template-columns:1fr}
+  .nav .btn{flex:1}
+}
+</style>
+</head>
+<body>
+<main class="card" aria-live="polite">
+
+<!-- intro -->
+<section id="s0">
+  <div class="intro">
+    <div>
+      <p class="kick">De woontoekomst-check</p>
+      <h1 class="serif">Blijven of gaan? <em>Vier vragen</em> over hoe jij later wilt wonen.</h1>
+      <p class="lead">Bijna negen op de tien huiseigenaren van 55 jaar en ouder hebben nagedacht over hoe ze later willen wonen. De helft heeft daar nog niets mee gedaan.</p>
+      <div class="note" id="advNote"></div>
+      <button class="btn btn-gold" type="button" data-go="1">Begin met vraag 1 →</button>
+      <p class="small">Ongeveer drie minuten. Geen cijfers, geen verplichtingen. Aan het eind beslis je zelf of je de antwoorden verstuurt.</p>
+    </div>
+    <img class="photo" id="advFoto" src="" alt="">
+  </div>
+</section>
+
+<!-- vragen -->
+<section id="s1" hidden>
+  <div class="prog"></div>
+  <p class="step-l">Vraag 1 van 4</p>
+  <h2 class="serif">Welke vraag heb jij jezelf weleens gesteld?</h2>
+  <p class="sub">Kies alles wat je herkent.</p>
+  <div class="opts two" data-q="q1" data-multi="1">
+    <label class="opt"><input type="checkbox" value="Kan ik hier blijven wonen als de trap te veel wordt?"><span class="t q">“Kan ik hier blijven wonen als de trap te veel wordt?”</span><span class="dot"></span></label>
+    <label class="opt"><input type="checkbox" value="Hoe kan ik mijn kinderen op weg helpen?"><span class="t q">“Hoe kan ik mijn kinderen op weg helpen?”</span><span class="dot"></span></label>
+    <label class="opt"><input type="checkbox" value="Kan ik mijn overwaarde gebruiken zonder te verhuizen?"><span class="t q">“Kan ik mijn overwaarde gebruiken zonder te verhuizen?”</span><span class="dot"></span></label>
+    <label class="opt"><input type="checkbox" value="Blijft het betaalbaar na mijn pensioen?"><span class="t q">“Blijft het betaalbaar na mijn pensioen?”</span><span class="dot"></span></label>
+    <label class="opt"><input type="checkbox" value="Wie betaalt de verduurzaming en het onderhoud?"><span class="t q">“Wie betaalt de verduurzaming en het onderhoud?”</span><span class="dot"></span></label>
+    <label class="opt"><input type="checkbox" value="Krijg ik op mijn leeftijd nog een hypotheek?"><span class="t q">“Krijg ik op mijn leeftijd nog een hypotheek?”</span><span class="dot"></span></label>
+    <label class="opt wide"><input type="checkbox" value="Geen van deze vragen speelt bij mij" data-none="1"><span class="t">Geen van deze vragen speelt bij mij</span><span class="dot"></span></label>
+  </div>
+  <div class="nav"><button class="btn btn-ghost" type="button" data-go="0">Terug</button><button class="btn btn-gold" type="button" data-go="2" disabled>Volgende</button></div>
+</section>
+
+<section id="s2" hidden>
+  <div class="prog"></div>
+  <p class="step-l">Vraag 2 van 4</p>
+  <h2 class="serif">Als je mocht kiezen: blijven of gaan?</h2>
+  <p class="sub">Het gaat om je voorkeur van dit moment.</p>
+  <div class="opts" data-q="q2">
+    <label class="opt"><input type="radio" name="q2" value="Ik blijf het liefst waar ik woon"><span class="t">Ik blijf het liefst waar ik woon</span><span class="d">Eventueel met aanpassingen aan het huis</span><span class="dot"></span></label>
+    <label class="opt"><input type="radio" name="q2" value="Ik wil naar een andere koopwoning"><span class="t">Ik wil naar een andere koopwoning</span><span class="d">Bijvoorbeeld kleiner of gelijkvloers</span><span class="dot"></span></label>
+    <label class="opt"><input type="radio" name="q2" value="Ik wil naar een huurwoning"><span class="t">Ik wil naar een huurwoning</span><span class="dot"></span></label>
+    <label class="opt"><input type="radio" name="q2" value="Dat weet ik nog niet"><span class="t">Dat weet ik nog niet</span><span class="d">Ook dat is een antwoord</span><span class="dot"></span></label>
+  </div>
+  <div class="nav"><button class="btn btn-ghost" type="button" data-go="1">Terug</button><button class="btn btn-gold" type="button" data-go="3" disabled>Volgende</button></div>
+</section>
+
+<section id="s3" hidden>
+  <div class="prog"></div>
+  <p class="step-l">Vraag 3 van 4</p>
+  <h2 class="serif">Hoe concreet is het al?</h2>
+  <p class="sub">Geen plannen is ook een helder antwoord.</p>
+  <div class="opts" data-q="q3">
+    <label class="opt"><input type="radio" name="q3" value="Ik heb een plan voor het komende jaar"><span class="t">Ik heb een plan voor het komende jaar</span><span class="dot"></span></label>
+    <label class="opt"><input type="radio" name="q3" value="Ik denk erover na, zonder datum"><span class="t">Ik denk erover na, zonder datum</span><span class="dot"></span></label>
+    <label class="opt"><input type="radio" name="q3" value="Ik heb geen plannen"><span class="t">Ik heb geen plannen</span><span class="dot"></span></label>
+  </div>
+  <div class="nav"><button class="btn btn-ghost" type="button" data-go="2">Terug</button><button class="btn btn-gold" type="button" data-go="4" disabled>Volgende</button></div>
+</section>
+
+<section id="s4" hidden>
+  <div class="prog"></div>
+  <p class="step-l">Vraag 4 van 4</p>
+  <h2 class="serif">Wat wil je dat ik hiermee doe?</h2>
+  <p class="sub">Jij bepaalt het vervolg.</p>
+  <div class="opts" data-q="q4">
+    <label class="opt"><input type="radio" name="q4" value="Bel mij, dan plannen we een gesprek"><span class="t">Bel mij, dan plannen we een gesprek</span><span class="dot"></span></label>
+    <label class="opt"><input type="radio" name="q4" value="Stuur mij eerst informatie per mail"><span class="t">Stuur mij eerst informatie per mail</span><span class="dot"></span></label>
+    <label class="opt"><input type="radio" name="q4" value="Voor nu is het zo goed"><span class="t">Voor nu is het zo goed</span><span class="dot"></span></label>
+  </div>
+  <div class="nav"><button class="btn btn-ghost" type="button" data-go="3">Terug</button><button class="btn btn-gold" type="button" data-go="5" disabled>Volgende</button></div>
+</section>
+
+<!-- controleren en versturen -->
+<section id="s5" hidden>
+  <div class="prog"></div>
+  <p class="step-l">Controleren en versturen</p>
+  <h2 class="serif">Klopt dit zo?</h2>
+  <p class="sub">Dit is wat ik van je ontvang.</p>
+  <div class="sum" id="sum"></div>
+  <div class="grid2">
+    <div><label class="f" for="naam">Je naam</label><input class="in" id="naam" autocomplete="name"></div>
+    <div><label class="f" for="tel">Telefoon <small id="telReq">(niet verplicht)</small></label><input class="in" id="tel" type="tel" autocomplete="tel" placeholder="06 - ..."></div>
+  </div>
+  <div style="margin-top:16px"><label class="f" for="extra">Wil je er iets aan toevoegen? <small>(niet verplicht)</small></label><textarea class="in" id="extra" placeholder="Bijvoorbeeld wat de aanleiding is"></textarea></div>
+  <p class="hint">Zet hier geen medische gegevens in. Die heb ik voor dit gesprek niet nodig.</p>
+  <label class="consent"><input type="checkbox" id="ok"><span>Ik vind het goed dat <span class="advNaam"></span> deze antwoorden ontvangt en er contact over opneemt op de manier die ik heb gekozen.</span></label>
+  <p class="hint" style="margin-top:10px">Versturen opent een bericht in je eigen e-mailprogramma. Er wordt niets op deze website bewaard.</p>
+  <div class="err" id="err"></div>
+  <div class="nav" style="margin-top:14px"><button class="btn btn-ghost" type="button" data-go="4">Terug</button><button class="btn btn-gold" type="button" id="send" disabled>Verstuur mijn antwoorden</button></div>
+</section>
+
+<section id="s6" hidden>
+  <div class="done">
+    <img class="photo" id="advFoto2" src="" alt="">
+    <h2 class="serif">Dank je wel.</h2>
+    <p class="sub" style="max-width:560px;margin:0 auto 12px">Je e-mailprogramma is geopend met je antwoorden. <b>Verstuur die e-mail</b>, dan neem ik contact met je op zoals je hebt aangegeven.</p>
+    <p class="small">Opent er geen e-mail? Stuur je antwoorden dan zelf naar <a class="advMail" href="#"></a>.</p>
+    <p style="margin-top:22px"><button class="btn btn-ghost" type="button" data-go="0">Opnieuw beginnen</button></p>
+  </div>
+</section>
+
+</main>
+<script id="cfg" type="application/json">{"naam": "", "kantoor": "", "mail": "", "kleur": "#B8893A", "foto": "", "note": "Een aantal geldverstrekkers kijkt eerder en strenger naar je inkomen na pensionering. **Verandert er niets aan je hypotheek, dan merk je daar niets van.** Heb je plannen met je woning, dan wil je dit weten voordat je een stap zet."}</script>
+<script>
+(function(){
+  /* Instellingen staan in het blok id="cfg" hierboven. Maak je eigen versie via de adviseurstoolkit. */
+  var C={};try{C=JSON.parse(document.getElementById('cfg').textContent)}catch(e){}
+  var P=new URLSearchParams(location.search);
+  var ADV={naam:C.naam||'',kantoor:C.kantoor||'',mail:C.mail||''};
+  function shade(h,p){var n=parseInt(h.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;function f(c){return Math.max(0,Math.min(255,Math.round(c*(1+p))))}return 'rgb('+f(r)+','+f(g)+','+f(b)+')'}
+  if(/^#[0-9a-fA-F]{6}$/.test(C.kleur2||''))document.documentElement.style.setProperty('--navy',C.kleur2);
+  if(/^#[0-9a-fA-F]{6}$/.test(C.kleur||'')){document.documentElement.style.setProperty('--gold',C.kleur);document.documentElement.style.setProperty('--gold-d',shade(C.kleur,-.15))}
+  ['advFoto','advFoto2'].forEach(function(id){var im=document.getElementById(id);if(!im)return;if(C.foto){im.src=C.foto;im.alt=(id==='advFoto'&&ADV.naam)?'Foto van '+ADV.naam:''}else{var d=document.createElement('div');d.className='photo house';d.id=id;d.innerHTML='<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 30 32 10l24 20"/><path d="M14 26v28h36V26"/><path d="M27 54V40h10v14"/><path d="M44 18V11h6v12"/></svg>';im.replaceWith(d)}});
+  var nt=document.getElementById('advNote');if(nt){var t=String(C.note||'').replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]}).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>');if(t)nt.innerHTML=t;else nt.remove()}
+  var WIE=(ADV.naam||'mijn adviseur')+(ADV.kantoor?' van '+ADV.kantoor:'');document.querySelectorAll('.advNaam').forEach(function(e){e.textContent=WIE});
+  document.querySelectorAll('.advMail').forEach(function(e){if(ADV.mail){e.textContent=ADV.mail;e.href='mailto:'+ADV.mail}else{e.textContent='je adviseur';e.removeAttribute('href')}});
+
+  var A={q1:[],q2:'',q3:'',q4:''},cur=0;
+  function $(i){return document.getElementById(i)}
+  function show(n){
+    cur=n;for(var k=0;k<=6;k++){var s=$('s'+k);if(s)s.hidden=(k!==n)}
+    var p=$('s'+n).querySelector('.prog');
+    if(p){p.innerHTML='';for(var i=1;i<=5;i++){var b=document.createElement('i');if(i<n)b.className='ok';else if(i===n)b.className='cur';p.appendChild(b)}}
+    if(n===5)renderSum();
+    window.scrollTo({top:0,behavior:'smooth'});
+    var h=$('s'+n).querySelector('h1,h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}
+  }
+  document.addEventListener('click',function(e){var g=e.target.closest('[data-go]');if(!g||g.disabled)return;show(+g.dataset.go)});
+  document.querySelectorAll('.opts').forEach(function(box){
+    var q=box.dataset.q,multi=box.dataset.multi==='1',next=box.parentNode.querySelector('.nav .btn-gold');
+    box.addEventListener('change',function(e){
+      var inp=e.target;
+      if(multi){
+        if(inp.dataset.none&&inp.checked)box.querySelectorAll('input').forEach(function(x){if(x!==inp)x.checked=false});
+        else if(inp.checked)box.querySelectorAll('input[data-none]').forEach(function(x){x.checked=false});
+        A[q]=[].map.call(box.querySelectorAll('input:checked'),function(x){return x.value});
+      }else A[q]=inp.value;
+      box.querySelectorAll('.opt').forEach(function(o){o.classList.toggle('sel',o.querySelector('input').checked)});
+      next.disabled=multi?A[q].length===0:!A[q];
+      if(q==='q4'){var bel=A.q4.indexOf('Bel mij')===0;$('telReq').textContent=bel?'(nodig om je te bellen)':'(niet verplicht)'}
+    });
+  });
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function renderSum(){
+    var rows=[['Herkende vragen',A.q1.join(' · ')],['Voorkeur',A.q2],['Hoe concreet',A.q3],['Vervolg',A.q4]];
+    $('sum').innerHTML=rows.map(function(r){return '<div><span>'+r[0]+'</span><b>'+esc(r[1]||'–')+'</b></div>'}).join('');
+    check();
+  }
+  function check(){var bel=A.q4.indexOf('Bel mij')===0;$('send').disabled=!($('ok').checked&&$('naam').value.trim()&&(!bel||$('tel').value.trim()))}
+  ['ok','naam','tel'].forEach(function(i){$(i).addEventListener('input',check);$(i).addEventListener('change',check)});
+  $('send').addEventListener('click',function(){
+    var n=$('naam').value.trim(),t=$('tel').value.trim(),x=$('extra').value.trim();
+    var body='Beste '+(ADV.naam||'adviseur')+',\n\nHierbij mijn antwoorden op de woontoekomst-check.\n\n'+
+      'Herkende vragen: '+(A.q1.join('; ')||'–')+'\nVoorkeur: '+A.q2+'\nHoe concreet: '+A.q3+'\nVervolg: '+A.q4+
+      (x?'\n\nToelichting: '+x:'')+'\n\nNaam: '+n+(t?'\nTelefoon: '+t:'')+
+      '\n\nIk vind het goed dat '+WIE+' deze antwoorden ontvangt en er contact over opneemt op de manier die ik heb gekozen.\n\nMet vriendelijke groet,\n'+n;
+    location.href='mailto:'+ADV.mail+'?subject='+encodeURIComponent('Woontoekomst-check – '+n)+'&body='+encodeURIComponent(body);
+    show(6);
+  });
+})();
+</script>
+</body>
+</html>

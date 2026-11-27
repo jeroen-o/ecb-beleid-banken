@@ -240,6 +240,7 @@ html.locked #gate{display:flex;min-height:100vh;align-items:center;justify-conte
     <button role="tab" data-t="t3" aria-selected="false">③ Klantvragen: jaarlijkse update &amp; nazorgscan</button>
     <button role="tab" data-t="t4" aria-selected="false">④ Klanttekst 52+</button>
     <button role="tab" data-t="t5" aria-selected="false">⑤ Nieuwsbrief</button>
+    <button role="tab" data-t="t6" aria-selected="false">⑥ Woontoekomst-check</button>
   </nav>
 </div></header>
 
@@ -276,6 +277,7 @@ html.locked #gate{display:flex;min-height:100vh;align-items:center;justify-conte
     <div class="mat g"><h3>Nazorgscan hypotheken</h3><p>22 vragen in 8 rubrieken voor de doelgroep 50–57 en klanten met signalen. Vragen zelf aan te vinken.</p><div class="row"><button class="b" data-go="t3" data-mode="lang" type="button">Open</button></div></div>
     <div class="mat g"><h3>Blinqx Actiefbeheerscan</h3><p>Slim formulier dat de klant zelf invult. De antwoorden komen gestructureerd terug, zodat je kunt selecteren en prioriteren. Voor Blinqx-gebruikers komt er een training van een dagdeel, gegeven door Dirk van Haarlem (<a href="https://www.actiefklantbeheer.nl/" target="_blank" rel="noopener">Stichting Actief Klantbeheer</a>). Opleiding: <a href="https://www.impact.nu/opleiding/actief-klantbeheer-praktijk-uitvoering" target="_blank" rel="noopener">Actief klantbeheer: praktijk en uitvoering (Impact)</a>. Toolpakket: € 79,- per maand + eenmalig € 495,- (excl. btw).</p><div class="row"><a class="b" href="https://actiefbeheerscan.nl" target="_blank" rel="noopener">Website</a><a class="b alt" href="https://formulier.actiefbeheerscan.nl/s/wD106O1z7GoYW1zn" target="_blank" rel="noopener">Voorbeeld</a><a class="b" href="mailto:jeroen.oversteegen@blinqx.tech?subject=Actiefbeheerscan-toolpakket%20afnemen" target="_blank" rel="noopener" style="background:#C00000;border-color:#C00000">Toolpakket afnemen</a></div></div>
     <div class="mat g"><h3>Hypotheekcheck · hypotheekcijfer</h3><p>De klant krijgt een cijfer van 1 tot 10 voor de betaalbaarheid van de hypotheek: nu, bij het einde van de renteaftrek, de rentevaste periode, AOW en de looptijd, en bij life events zoals arbeidsongeschiktheid, werkloosheid, overlijden en scheiding. Met persoonlijk rapport en tips. Met een Blinqx-account haal je gegevens op via Ockto. Indicatie, geen advies.</p><div class="row"><a class="b" href="https://hypotheekcijfer.nl/bepaal-uw-hypotheekcijfer/" target="_blank" rel="noopener">Start de hypotheekcheck</a></div></div>
+    <div class="mat c"><h3>Woontoekomst-check</h3><p>Vier vragen over blijven of gaan, met controlestap en toestemming. Pas hem aan met je eigen naam, foto, kleur en e-mailadres, download het HTML-bestand en zet hem op je website. Reacties komen in je eigen mailbox.</p><div class="row"><button class="b" data-go="t6" type="button">Open</button><a class="b alt" href="woontoekomst-check.html" target="_blank" rel="noopener">Voorbeeld</a></div></div>
     <div class="mat c"><h3>Marketingbieb.nl</h3><p>De marketingbibliotheek voor financieel adviseurs: gratis en freemium campagnes, klanttools, nieuwsbrieven, social posts, een marketingkalender en een hypotheekkennisbank, in je eigen huisstijl. Een activiteit van Blinqx Verzekering &amp; Hypotheek.</p><div class="row"><a class="b" href="https://marketingbieb.nl/" target="_blank" rel="noopener">Naar Marketingbieb.nl</a></div></div>
     <div class="mat o"><h3>Gesprekshulp "Hypotheek straks"</h3><p>NVHP-tool voor de klant: kan ik straks nog doorstromen of mijn hypotheek verlengen? Een verkenning, geen advies.</p><div class="row"><a class="b" href="hypotheek-straks/" target="_blank" rel="noopener">Open tool</a></div></div>
     <div class="mat o"><h3>Klantlinks</h3><p>Voor in je mails en gesprekken: eigen AOW-datum (SVB) en pensioenopbouw (mijnpensioenoverzicht.nl).</p><div class="row"><a class="b" href="https://www.svb.nl" target="_blank" rel="noopener">svb.nl</a><a class="b alt" href="https://www.mijnpensioenoverzicht.nl" target="_blank" rel="noopener">Pensioen</a></div></div>
@@ -341,7 +343,8 @@ html.locked #gate{display:flex;min-height:100vh;align-items:center;justify-conte
           <option value="kosteloos">Kosteloos en vrijblijvend</option>
           <option value="tarief">Volgens ons dienstverleningsdocument</option>
         </select></div>
-      <div><label>Huisstijlkleur</label><div class="row"><input type="color" id="f_kleur" data-k="kleur" value="#17365D"><span class="muted">gebruikt in beelden en klanttekst</span></div></div>
+      <div><label>Huisstijlkleur</label><div class="row"><input type="color" id="f_kleur" data-k="kleur" value="#17365D"><span class="muted">hoofdkleur: achtergrond beelden, koppen</span></div></div>
+      <div><label>Steunkleur</label><div class="row"><input type="color" id="f_kleur2" data-k="kleur2" value="#C00000"><span class="muted">accent: lijnen en knoppen</span></div></div>
       <div class="full"><label for="f_logo">Logo (PNG, JPG of SVG)</label>
         <div class="row" style="align-items:stretch"><div class="logoBox" id="logoBox" style="flex:1"><span class="muted">Nog geen logo</span></div>
         <div style="display:flex;flex-direction:column;gap:8px;justify-content:center"><input type="file" id="f_logo" accept="image/png,image/jpeg,image/svg+xml,image/webp"><button class="b alt" id="logoDel" type="button">Logo verwijderen</button></div></div>
@@ -353,10 +356,13 @@ html.locked #gate{display:flex;min-height:100vh;align-items:center;justify-conte
     <h2>Voorbeeld</h2>
     <div class="vk" id="vk"></div>
     <div class="row" style="margin-top:14px">
-      <button class="b alt" id="expJson" type="button">Gegevens bewaren (bestand)</button>
-      <label class="b alt" style="display:inline-block;margin:0;font-weight:600;cursor:pointer">Gegevens laden<input type="file" id="impJson" accept="application/json" style="display:none"></label>
+      <button class="b" id="saveLocal" type="button">💾 Opslaan in deze browser</button>
+      <button class="b alt" id="expJson" type="button">⬇ Download gegevens (bestand)</button>
+      <label class="b alt" style="display:inline-block;margin:0;font-weight:600;cursor:pointer">⬆ Gegevens laden (bestand)<input type="file" id="impJson" accept="application/json" style="display:none"></label>
+      <button class="b alt" id="clearLocal" type="button">Opgeslagen gegevens wissen</button>
     </div>
-    <p class="muted" style="margin-top:8px">Privacy: alles blijft in je browser. Er wordt niets verstuurd of opgeslagen. Na het sluiten van de pagina zijn je gegevens weg; bewaar ze zo nodig als bestand en laad ze later weer in.</p>
+    <p class="muted" id="saveMsg" style="margin-top:8px"></p>
+    <p class="muted" style="margin-top:4px">Privacy: je gegevens worden niet naar een server verstuurd. <b>Opslaan in deze browser</b> bewaart ze alleen op dit apparaat, zodat ze er bij je volgende bezoek weer staan. Met <b>Download</b> krijg je een bestand dat je op een ander apparaat weer kunt laden.</p>
   </div>
 </section>
 
@@ -413,6 +419,33 @@ html.locked #gate{display:flex;min-height:100vh;align-items:center;justify-conte
   </div>
   <article id="art"></article>
 </section>
+<!-- ============ TAB 6 ============ -->
+<section class="tab" id="t6">
+  <div class="card">
+    <h2>Woontoekomst-check voor je eigen website</h2>
+    <p class="muted">Vier vragen over hoe je klant later wil wonen, met een controlestap en toestemming. Pas de check aan met je eigen gegevens, download het HTML-bestand en zet het op je website. De antwoorden komen in <b>je eigen mailbox</b>: versturen opent een e-mail aan het adres dat je hieronder invult. Er wordt niets op een server bewaard.</p>
+    <div class="grid" style="margin-top:12px">
+      <div><label for="wc_naam">Naam adviseur</label><input type="text" id="wc_naam" placeholder="Anna de Vries"></div>
+      <div><label for="wc_kantoor">Kantoornaam</label><input type="text" id="wc_kantoor" placeholder="De Vries Hypotheken"></div>
+      <div><label for="wc_mail">E-mailadres voor de reacties</label><input type="email" id="wc_mail" placeholder="info@jouwkantoor.nl"></div>
+      <div><label>Accentkleur (knoppen, voortgang)</label><div class="row"><input type="color" id="wc_kleur" value="#B8893A"><input type="color" id="wc_kleur2" value="#1B2A4A" title="Steunkleur"><span class="muted">steunkleur: koppen</span><button class="b alt" type="button" id="wc_kleurReset">Standaard</button><button class="b alt" type="button" id="wc_kleurHuis">Huisstijl overnemen</button></div></div>
+      <div class="full"><label for="wc_note">Tekst in het kader op de startpagina</label><textarea id="wc_note" rows="3"></textarea><p class="muted" style="margin-top:4px">Zet een woord tussen **sterretjes** om het vet te maken.</p></div>
+      <div class="full"><label for="wc_foto">Foto van de adviseur (optioneel; zonder foto staat er een huisje)</label>
+        <div class="row"><div class="logoBox" id="wc_fotoBox" style="width:120px;min-height:120px;flex:none"></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><input type="file" id="wc_foto" accept="image/png,image/jpeg,image/webp"><button class="b alt" type="button" id="wc_fotoDel">Huisje in plaats van foto</button><button class="b alt" type="button" id="wc_fromKantoor">Neem kantoorgegevens over</button></div></div>
+      </div>
+    </div>
+    <div class="row" style="margin-top:16px">
+      <button class="b red" type="button" id="wc_dl">Download HTML-bestand</button>
+      <button class="b alt" type="button" id="wc_open">Bekijk in nieuw tabblad</button>
+    </div>
+    <div class="ok" style="margin-top:12px"><b>Zo zet je hem online:</b> upload <code>woontoekomst-check.html</code> naar je website (bijvoorbeeld <code>jouwsite.nl/woontoekomst-check.html</code>) en link ernaar vanuit je nieuwsbrief, mailing of LinkedIn. In WordPress, Wix en vergelijkbare systemen kun je het bestand ook in een iframe of HTML-blok plaatsen.</div>
+    <div class="afm"><b>⚠ AVG/AFM:</b> de check vraagt toestemming voordat de klant verstuurt en waarschuwt tegen medische gegevens. Vermeld de check in je privacyverklaring en leg de reacties vast in het klantdossier. De check is informatie, geen advies.</div>
+    <p class="muted" id="wc_status" style="margin-top:8px"></p>
+  </div>
+  <div class="card" style="padding:0;overflow:hidden"><iframe id="wc_prev" title="Voorbeeld woontoekomst-check" style="width:100%;height:760px;border:0;display:block;background:#F3EEE5"></iframe></div>
+</section>
+
 <!-- ============ TAB 5 ============ -->
 <section class="tab" id="t5">
   <div class="card">
@@ -434,7 +467,8 @@ html.locked #gate{display:flex;min-height:100vh;align-items:center;justify-conte
 (function(){
 "use strict";
 /* ---------- state (in-memory, geen localStorage) ---------- */
-var S={kantoor:'',adviseur:'',functie:'',url:'',tel:'',email:'',scan:'',afm:'',kifid:'',kosten:'',kleur:'#17365D',logo:''};
+var S={kantoor:'',adviseur:'',functie:'',url:'',tel:'',email:'',scan:'',afm:'',kifid:'',kosten:'',kleur:'#17365D',kleur2:'#C00000',logo:''};
+var KDEF={kleur:'#17365D',kleur2:'#C00000'};
 var logoImg=null;
 var DATUM='18-11-2026';
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -455,11 +489,11 @@ function printHtml(title,body,extraCss){
 
 /* ---------- tabs ---------- */
 var tabs=document.querySelectorAll('nav button');
-var HASH={t0:'overzicht',t1:'gegevens',t2:'linkedin',t3:'klantvragen',t4:'klanttekst',t5:'nieuwsbrief'};
+var HASH={t0:'overzicht',t1:'gegevens',t2:'linkedin',t3:'klantvragen',t4:'klanttekst',t5:'nieuwsbrief',t6:'woontoekomst'};
 function show(id,noHash){
   tabs.forEach(function(x){x.setAttribute('aria-selected',x.dataset.t===id?'true':'false')});
   document.querySelectorAll('.tab').forEach(function(t){t.classList.toggle('on',t.id===id)});
-  if(id==='t2')renderPosts(); if(id==='t0')renderCal();
+  if(id==='t2')renderPosts(); if(id==='t0')renderCal(); if(id==='t6')wcInit();
   if(!noHash)history.replaceState(null,'','#'+HASH[id]);
   window.scrollTo(0,0);
 }
@@ -489,7 +523,7 @@ document.getElementById('expJson').onclick=function(){
 document.getElementById('impJson').addEventListener('change',function(e){
   var f=e.target.files[0]; if(!f)return; var r=new FileReader();
   r.onload=function(){try{var o=JSON.parse(r.result);Object.keys(S).forEach(function(k){if(typeof o[k]==='string')S[k]=o[k]});
-    document.querySelectorAll('[data-k]').forEach(function(el){el.value=S[el.dataset.k]||(el.type==='color'?'#17365D':'')});
+    document.querySelectorAll('[data-k]').forEach(function(el){el.value=S[el.dataset.k]||KDEF[el.dataset.k]||''});
     setLogo(S.logo);}catch(x){alert('Dit bestand kan niet worden gelezen.')}};
   r.readAsText(f);
 });
@@ -548,9 +582,9 @@ function draw(cv,p){
   c.font='400 '+subFs+'px '+F;var sl=wrap(c,p.sub,W-pad*2);
   var total=lines.length*fs*1.1+subFs*0.8+sl.length*subFs*1.3;var y=Math.max(pad*1.9,(areaH-total)/2+fs*0.8);
   c.font='700 '+fs+'px '+F;c.fillStyle='#fff';lines.forEach(function(l){c.fillText(l,pad,y);y+=fs*1.1});
-  c.fillStyle='#C00000';c.fillRect(pad,y-fs*0.55,Math.round(W*0.09),Math.max(5,Math.round(W*0.006)));y+=subFs*0.6;
+  c.fillStyle=S.kleur2;c.fillRect(pad,y-fs*0.55,Math.round(W*0.09),Math.max(5,Math.round(W*0.006)));y+=subFs*0.6;
   c.font='400 '+subFs+'px '+F;c.fillStyle='rgba(255,255,255,.92)';sl.forEach(function(l){c.fillText(l,pad,y);y+=subFs*1.3});
-  c.fillStyle='#fff';c.fillRect(0,H-band,W,band);c.fillStyle=S.kleur;c.fillRect(0,H-band,W,Math.max(4,Math.round(H*0.006)));
+  c.fillStyle='#fff';c.fillRect(0,H-band,W,band);c.fillStyle=S.kleur2;c.fillRect(0,H-band,W,Math.max(4,Math.round(H*0.006)));
   var lx=pad,ly=H-band,maxLH=band*0.55,maxLW=W*0.32;
   if(logoImg){var r=Math.min(maxLW/logoImg.width,maxLH/logoImg.height);var lw=logoImg.width*r,lh=logoImg.height*r;c.drawImage(logoImg,lx,ly+(band-lh)/2,lw,lh)}
   else{c.fillStyle=S.kleur;c.font='700 '+Math.round(W*0.034)+'px '+F;c.fillText(v('kantoor','kantoornaam'),lx,ly+band/2+W*0.012)}
@@ -693,7 +727,7 @@ function renderArt(){
   '<h2>Denk ook aan uw partner</h2><p>Wat gebeurt er met de hypotheek als een van u beiden overlijdt? Het inkomen daalt, terwijl de woonlasten blijven. Een overlijdensrisicoverzekering wordt op latere leeftijd duurder en is niet altijd mogelijk. Ook uw testament en de positie van uw kinderen spelen mee.</p>'+
   '<h2>Wat kunt u nu al doen?</h2><ul><li>Zoek uw <b>AOW-datum</b> op via <a href="https://www.svb.nl" target="_blank" rel="noopener">svb.nl</a></li><li>Bekijk uw <b>pensioenopbouw</b> op <a href="https://www.mijnpensioenoverzicht.nl" target="_blank" rel="noopener">mijnpensioenoverzicht.nl</a></li><li>Pak uw <b>hypotheekgegevens</b> erbij: leningdelen, aflosvorm, einde rentevaste periode</li><li>Bedenk welke <b>plannen</b> u de komende 5 tot 10 jaar met uw woning heeft</li></ul>'+
   '<div class="box"><p><b>'+vh('kantoor','kantoornaam')+' helpt u graag.</b> Doe onze korte check of plan een gesprek. We rekenen uw situatie door en laten u zien welke mogelijkheden u heeft.'+esc(kosten)+'</p>'+
-  '<a class="cta" href="'+esc(href(S.scan||S.url))+'" target="_blank" rel="noopener">Doe de check</a><a class="cta" style="background:transparent;color:'+S.kleur+';border:2px solid '+S.kleur+'" href="'+(S.email?'mailto:'+esc(S.email):'#')+'">Plan een gesprek</a>'+
+  '<a class="cta" style="background:'+S.kleur2+'" href="'+esc(href(S.scan||S.url))+'" target="_blank" rel="noopener">Doe de check</a><a class="cta" style="background:transparent;color:'+S.kleur+';border:2px solid '+S.kleur+'" href="'+(S.email?'mailto:'+esc(S.email):'#')+'">Plan een gesprek</a>'+
   '<p style="margin-top:8px">Bel '+vh('tel','telefoon')+' of mail '+vh('email','e-mail')+(S.adviseur?' · '+esc(S.adviseur)+(S.functie?', '+esc(S.functie):''):'')+'</p></div>'+
   '<h2>Veelgestelde vragen</h2>'+
   '<details><summary>Kan ik na mijn 52e nog een hypotheek krijgen?</summary><p>Ja. Alleen kan het maximale bedrag bij sommige geldverstrekkers lager uitvallen, omdat uw pensioen eerder meetelt.</p></details>'+
@@ -719,7 +753,7 @@ function renderNL(){
   var link=esc(href(S.scan||S.url)),kost=esc(kostenZin());
   var head='<p style="font-size:13px;color:#5f6670;margin:0 0 4px"><b>Onderwerpregel</b> (kies er één)</p><ul style="margin:0 0 10px;font-size:15px"><li>Hypotheek vanaf 52 jaar: wat verandert er?</li><li>Plannen met uw woning? Laat ze op tijd doorrekenen</li><li>Uw pensioen telt bij een aantal banken eerder mee</li></ul><p style="font-size:13px;color:#5f6670;margin:0 0 14px"><b>Preheader:</b> Banken kijken eerder naar uw pensioen. Voor wie geldt dat, en wat kunt u nu al doen?</p><hr style="border:0;border-top:1px solid #ddd;margin:0 0 16px">';
   var brand='<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid '+S.kleur+';padding-bottom:10px;margin-bottom:16px;gap:12px">'+(S.logo?'<img src="'+S.logo+'" alt="'+esc(S.kantoor||'Logo')+'" style="max-height:50px;max-width:200px">':'<b style="font-size:19px;color:'+S.kleur+'">'+K+'</b>')+'<span style="font-size:13px;color:#5f6670">Nieuwsbrief</span></div>';
-  var cta='<p style="margin:16px 0"><a href="'+link+'" target="_blank" rel="noopener" style="display:inline-block;background:'+S.kleur+';color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:6px">Doe de hypotheekcheck</a></p>';
+  var cta='<p style="margin:16px 0"><a href="'+link+'" target="_blank" rel="noopener" style="display:inline-block;background:'+S.kleur2+';color:#fff;text-decoration:none;font-weight:700;padding:10px 18px;border-radius:6px">Doe de hypotheekcheck</a></p>';
   var sign='<p>Met vriendelijke groet,<br><br><b>'+A+'</b>'+(S.functie?'<br>'+esc(S.functie):'')+(sameKA()?'':'<br>'+K)+'<br>'+T+' · '+E+' · '+U+'</p>';
   var disc='<p style="font-size:12.5px;color:#5f6670;border-top:1px solid #ddd;padding-top:8px;margin-top:18px">Algemene informatie, geen persoonlijk advies. Het beleid van geldverstrekkers verschilt en kan wijzigen. Stand van zaken: '+DATUM+'. AFM-vergunning '+vh('afm','nummer')+' · Kifid '+vh('kifid','nummer')+' · <span class="ph">[afmeldlink]</span></p>';
   var h2='style="color:'+S.kleur+';font-size:22px;margin:0 0 8px"';var h3='style="color:'+S.kleur+';font-size:18px;margin:16px 0 4px"';
@@ -787,11 +821,17 @@ function renderCal(){
   document.getElementById('cal').innerHTML=h;
 }
 sd.addEventListener('input',renderCal);
-var DEMO={kantoor:'Dennes Roes',adviseur:'Dennes Roes',functie:'Directeur Hypotheekadvies',url:'dennes-roes.nl',tel:'06 51 11 78 93',email:'dennes.roes@blinqx.tech',scan:'https://formulier.actiefbeheerscan.nl/s/wD106O1z7GoYW1zn',afm:'',kifid:'',kosten:'',kleur:'#17365D',logo:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgNTYwIDE2MCI+CjxyZWN0IHg9IjYiIHk9IjIwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgcng9IjIyIiBmaWxsPSIjMTczNjVEIi8+CjxwYXRoIGQ9Ik0zMCAxMTIgTDY2IDUwIEwxMDIgMTEyIFoiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSI1OCIgeT0iODgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyNCIgZmlsbD0iI0MwMDAwMCIvPgo8dGV4dCB4PSIxNDgiIHk9Ijc4IiBmb250LWZhbWlseT0iQ2FsaWJyaSwgQ2FybGl0bywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxNzM2NUQiIGxldHRlci1zcGFjaW5nPSIyIj5ERU5ORVMgUk9FUzwvdGV4dD4KPHRleHQgeD0iMTUwIiB5PSIxMTgiIGZvbnQtZmFtaWx5PSJDYWxpYnJpLCBDYXJsaXRvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZmlsbD0iIzVmNjY3MCIgbGV0dGVyLXNwYWNpbmc9IjEiPmh5cG90aGVla2FkdmllczwvdGV4dD4KPHJlY3QgeD0iNDAwIiB5PSI5NiIgd2lkdGg9IjExMCIgaGVpZ2h0PSIzNCIgcng9IjgiIGZpbGw9IiNDMDAwMDAiLz4KPHRleHQgeD0iNDU1IiB5PSIxMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJDYWxpYnJpLCBDYXJsaXRvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9IjMiPkRFTU88L3RleHQ+Cjwvc3ZnPg=='};
-function applyState(o){Object.keys(S).forEach(function(k){S[k]=(o&&typeof o[k]==='string')?o[k]:(k==='kleur'?'#17365D':'')});
-  document.querySelectorAll('[data-k]').forEach(function(el){el.value=S[el.dataset.k]||(el.type==='color'?'#17365D':'')});
+var DEMO={kantoor:'Dennes Roes',adviseur:'Dennes Roes',functie:'Directeur Hypotheekadvies',url:'dennes-roes.nl',tel:'06 51 11 78 93',email:'dennes.roes@blinqx.tech',scan:'https://formulier.actiefbeheerscan.nl/s/wD106O1z7GoYW1zn',afm:'',kifid:'',kosten:'',kleur:'#17365D',kleur2:'#C00000',logo:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NjAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgNTYwIDE2MCI+CjxyZWN0IHg9IjYiIHk9IjIwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgcng9IjIyIiBmaWxsPSIjMTczNjVEIi8+CjxwYXRoIGQ9Ik0zMCAxMTIgTDY2IDUwIEwxMDIgMTEyIFoiIGZpbGw9IiNmZmYiLz48cmVjdCB4PSI1OCIgeT0iODgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIyNCIgZmlsbD0iI0MwMDAwMCIvPgo8dGV4dCB4PSIxNDgiIHk9Ijc4IiBmb250LWZhbWlseT0iQ2FsaWJyaSwgQ2FybGl0bywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iNTQiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxNzM2NUQiIGxldHRlci1zcGFjaW5nPSIyIj5ERU5ORVMgUk9FUzwvdGV4dD4KPHRleHQgeD0iMTUwIiB5PSIxMTgiIGZvbnQtZmFtaWx5PSJDYWxpYnJpLCBDYXJsaXRvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZmlsbD0iIzVmNjY3MCIgbGV0dGVyLXNwYWNpbmc9IjEiPmh5cG90aGVla2FkdmllczwvdGV4dD4KPHJlY3QgeD0iNDAwIiB5PSI5NiIgd2lkdGg9IjExMCIgaGVpZ2h0PSIzNCIgcng9IjgiIGZpbGw9IiNDMDAwMDAiLz4KPHRleHQgeD0iNDU1IiB5PSIxMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJDYWxpYnJpLCBDYXJsaXRvLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9IjMiPkRFTU88L3RleHQ+Cjwvc3ZnPg=='};
+function applyState(o){Object.keys(S).forEach(function(k){S[k]=(o&&typeof o[k]==='string'&&o[k])?o[k]:(KDEF[k]||'')});
+  document.querySelectorAll('[data-k]').forEach(function(el){el.value=S[el.dataset.k]||KDEF[el.dataset.k]||''});
   document.getElementById('f_logo').value='';setLogo(S.logo);}
-applyState(DEMO);
+var LSK='tk_kantoorgegevens';
+function lsGet(){try{var v=localStorage.getItem(LSK);return v?JSON.parse(v):null}catch(e){return null}}
+function saveMsg(t){var m=document.getElementById('saveMsg');if(m)m.textContent=t}
+var SAVED=lsGet();
+applyState(SAVED||DEMO);
+document.getElementById('saveLocal').onclick=function(){try{localStorage.setItem(LSK,JSON.stringify(S));saveMsg('✓ Opgeslagen in deze browser ('+new Date().toLocaleString('nl-NL',{dateStyle:'short',timeStyle:'short'})+'). Ze staan er bij je volgende bezoek weer.')}catch(e){saveMsg('Opslaan lukte niet (privévenster of te groot logo). Gebruik "Download gegevens".')}};
+document.getElementById('clearLocal').onclick=function(){try{localStorage.removeItem(LSK)}catch(e){}saveMsg('Opgeslagen gegevens gewist uit deze browser.')};
 function nieuwKantoor(){applyState(null);show('t1');
   document.getElementById('demoBar').innerHTML='<span style="flex:1"><b>Nieuw kantoor:</b> vul hieronder je eigen gegevens en logo in. Alle materialen worden direct bijgewerkt.</span><button class="b alt" id="demoBack" type="button">Demo terugzetten</button>';
   document.getElementById('demoBack').onclick=function(){applyState(DEMO);document.getElementById('demoBar').innerHTML=demoBarHtml;bindDemo()};
@@ -799,7 +839,40 @@ function nieuwKantoor(){applyState(null);show('t1');
 var demoBarHtml=document.getElementById('demoBar').innerHTML;
 function bindDemo(){var b=document.getElementById('demoClear');if(b)b.onclick=nieuwKantoor}
 bindDemo();
+if(SAVED){document.getElementById('demoBar').innerHTML='<span style="flex:1"><b>Je opgeslagen kantoorgegevens zijn geladen.</b> Pas ze aan en klik op Opslaan, of begin opnieuw.</span><button class="b alt" id="demoClear" type="button">＋ Nieuw kantoor invullen</button>';bindDemo();saveMsg('Geladen uit deze browser.')}
 document.querySelectorAll('[data-nieuw]').forEach(function(b){b.onclick=nieuwKantoor});
+/* ---------- tab 6: woontoekomst-check ---------- */
+var WC={tpl:null,cfg:null,foto:null,touched:false,timer:null};
+function wcEl(i){return document.getElementById(i)}
+function wcFromKantoor(){wcEl('wc_naam').value=S.adviseur||'';wcEl('wc_kantoor').value=S.kantoor||'';wcEl('wc_mail').value=S.email||'';
+  wcRender()}
+function wcCfg(){return {naam:wcEl('wc_naam').value.trim(),kantoor:wcEl('wc_kantoor').value.trim(),mail:wcEl('wc_mail').value.trim(),kleur:wcEl('wc_kleur').value,kleur2:wcEl('wc_kleur2').value,foto:WC.foto||'',note:wcEl('wc_note').value.trim()}}
+function wcBuild(){if(!WC.tpl)return '';var c=wcCfg();
+  var h=WC.tpl.replace(/<script id="cfg" type="application\/json">[\s\S]*?<\/script>/,function(){return '<script id="cfg" type="application/json">'+JSON.stringify(c).replace(/</g,'\\u003c')+'<\/script>'})
+    .replace(/<!--site-meta-->[\s\S]*?<!--\/site-meta-->/,'')
+    .replace(/<title>[^<]*<\/title>/,'<title>Woontoekomst-check'+(c.kantoor?' – '+esc(c.kantoor):'')+'</title>');
+  return h}
+function wcRender(){wcEl('wc_fotoBox').innerHTML=WC.foto?'<img src="'+WC.foto+'" alt="" style="max-height:110px;border-radius:50%">':'<span class="muted" style="text-align:center">🏠<br>huisje</span>';
+  clearTimeout(WC.timer);WC.timer=setTimeout(function(){var f=wcEl('wc_prev');if(f&&WC.tpl)f.srcdoc=wcBuild()},250);
+  var c=wcCfg();wcEl('wc_status').textContent=(!c.mail?'⚠ Vul het e-mailadres voor de reacties in. ':'')+(!c.naam?'⚠ Vul je naam in.':'')}
+function wcInit(){if(WC.tpl){wcRender();return}
+  wcEl('wc_status').textContent='Bezig met laden…';
+  fetch('woontoekomst-check.html',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.text()}).then(function(t){
+    WC.tpl=t;var m=t.match(/<script id="cfg" type="application\/json">([\s\S]*?)<\/script>/);WC.cfg=m?JSON.parse(m[1]):{};
+    wcEl('wc_note').value=WC.cfg.note||'';WC.foto='';if(S.adviseur&&S.adviseur!=='Dennes Roes')wcFromKantoor();else wcRender();
+  }).catch(function(){wcEl('wc_status').textContent='De check kon niet worden geladen. Open de toolkit via dennes-roes.nl en probeer het opnieuw.'})}
+['wc_naam','wc_kantoor','wc_mail','wc_kleur','wc_kleur2','wc_note'].forEach(function(i){wcEl(i).addEventListener('input',wcRender)});
+wcEl('wc_kleurReset').onclick=function(){wcEl('wc_kleur').value='#B8893A';wcEl('wc_kleur2').value='#1B2A4A';wcRender()};
+wcEl('wc_kleurHuis').onclick=function(){wcEl('wc_kleur').value=S.kleur2||'#B8893A';wcEl('wc_kleur2').value=S.kleur||'#1B2A4A';wcRender()};
+wcEl('wc_fromKantoor').onclick=wcFromKantoor;
+wcEl('wc_fotoDel').onclick=function(){WC.foto='';WC.touched=true;wcEl('wc_foto').value='';wcRender()};
+wcEl('wc_foto').addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;if(f.size>4*1024*1024){alert('Foto is groter dan 4 MB.');return}
+  var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var sz=400,cv=document.createElement('canvas');cv.width=sz;cv.height=sz;var x=cv.getContext('2d'),m=Math.min(im.width,im.height);
+    x.drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,sz,sz);WC.foto=cv.toDataURL('image/jpeg',.85);WC.touched=true;wcRender()};im.src=r.result};r.readAsDataURL(f)});
+wcEl('wc_dl').onclick=function(){var c=wcCfg();if(!c.mail||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.mail)){alert('Vul een geldig e-mailadres in voor de reacties.');return}
+  var b=new Blob([wcBuild()],{type:'text/html;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='woontoekomst-check.html';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)};
+wcEl('wc_open').onclick=function(){var w=window.open('','_blank');if(!w){alert('Pop-up geblokkeerd: sta pop-ups toe.');return}w.document.open();w.document.write(wcBuild());w.document.close()};
+
 renderAll();renderQ();renderCal();
 (function(){var h=location.hash.replace('#','');for(var k in HASH){if(HASH[k]===h){show(k,true);break}}})();
 })();
