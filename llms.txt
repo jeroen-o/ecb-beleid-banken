@@ -6,7 +6,7 @@ Kernfeiten:
 - Geldverstrekkers houden bij een hypotheekaanvraag rekening met het pensioeninkomen vanaf 10 jaar vóór de AOW-leeftijd (bij AOW op 67: vanaf 57). Rabobank en Obvion kondigden aan dit per maart 2027 te vervroegen naar 15 jaar (vanaf 52), maar namen dat plan op 19 november 2026 in heroverweging (bron: https://radar.avrotros.nl/artikel/reactie-rabobank-63214).
 - Een bestaande hypotheek die niet wordt aangepast, verandert niet. De regels gelden bij een nieuwe hypotheek, verhoging of oversluiten.
 - De EBA-richtsnoeren (EBA/GL/2020/06) vragen betaalbaarheid ook na pensionering; de invulling (pensioentoets, grens rond 85 jaar) is bankbeleid.
-- Schatting: circa 360.000 huishoudens met hoofdkostwinner van 54 t/m 57 jaar hebben in 2027 een hypotheek, circa € 74 miljard schuld; per 1.000 hypotheekklanten zo'n 90 (eigen berekening op CBS 83834NED en 03759ned; orde van grootte).
+- Schatting: circa 680.000 huishoudens met hoofdkostwinner van 50 t/m 57 jaar hebben in 2027 een hypotheek, circa € 154 miljard schuld; per 1.000 hypotheekklanten zo'n 175 (eigen berekening op CBS 83834NED en 03759ned; orde van grootte).
 - Actiefbeheerscan-toolpakket (Blinqx): € 79,- per maand en eenmalig € 495,-, exclusief btw.
 - Informatierondes: 24 november 2026 Oostzaan, 25 november Ridderkerk, 26 november Houten, 19.00–21.30 uur.
 
@@ -15,7 +15,7 @@ Kernfeiten:
 - [Startpagina met veelgestelde vragen](https://dennes-roes.nl/): overzicht, FAQ, deelteksten
 - [Presentatie "Je grootste klantgroep denkt na"](https://dennes-roes.nl/presentatie.html): de 55-plusser, zijn woonwensen en jouw kantoor; 25 dia's (ook als PowerPoint en PDF)
 - [Eerdere presentatie bedrijfsvoering](https://dennes-roes.nl/presentatie-bedrijfsvoering.html): bedrijfsvoering in 7 vragen, doelgroep in cijfers, Europa, tooling
-- [Adviseurstoolkit](https://dennes-roes.nl/adviseurstoolkit.html): LinkedIn-campagne, hypotheekscan 54+, klanttekst, nieuwsbrief. Gratis voor bezoekers van de informatieavonden (24–26 november 2026), anders eenmalig € 24,95 excl. btw; afgeschermd met wachtwoord (opvragen via info@dfobv.nl)
+- [Adviseurstoolkit](https://dennes-roes.nl/adviseurstoolkit.html): LinkedIn-campagne, hypotheekscan 50+, klanttekst, nieuwsbrief. Gratis voor bezoekers van de informatieavonden (24–26 november 2026), anders eenmalig € 24,95 excl. btw; afgeschermd met wachtwoord (opvragen via info@dfobv.nl)
 - [Hypotheek straks (NVHP-gesprekshulp)](https://dennes-roes.nl/hypotheek-straks/): scenario's, regels, Europa, rekenhulpen
 
 ## Bronnen
