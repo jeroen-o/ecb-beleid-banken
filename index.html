@@ -167,6 +167,23 @@ footer{color:var(--mute);font-size:14px;padding:28px 0 40px}
 .ijs details>summary:before{content:"▸";color:#C00000;margin-right:8px;transition:transform .15s}
 .ijs details[open]>summary:before{transform:rotate(90deg)}
 @media (max-width:760px){.ijs{padding:18px 16px}.ijs .grid{grid-template-columns:1fr}.ijs h4{font-size:22px}}
+.ehp{display:block!important}
+.ehp h4{font-size:26px;line-height:1.2}
+.ehp h5{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#ffb3b3;margin:16px 0 6px}
+.ehp-more>summary{cursor:pointer;font-weight:700;color:#fff;min-height:44px;display:flex;align-items:center;list-style:none}
+.ehp-more>summary::-webkit-details-marker{display:none}
+.ehp-more>summary:before{content:"▸";color:#ffb3b3;margin-right:8px;transition:transform .15s}
+.ehp-more[open]>summary:before{transform:rotate(90deg)}
+.ehp-ben{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.ehp-ben h5{grid-column:1/-1}
+.ehp .ben{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:12px 14px}
+.ehp .ben b{display:block;color:#fff;margin-bottom:4px}
+.ehp .ben span{color:#d7e3f1;font-size:15px}
+.ehp-cta{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.18)}
+.ehp-btns{display:flex;flex-direction:column;gap:8px}
+.ehp-btns .lbl{color:#c9d6e6;font-size:14px}
+.ehp .btnw{display:block;text-align:center;background:#fff;color:#17365D;text-decoration:none;font-weight:700;padding:10px 14px;border-radius:8px;min-height:44px}
+@media (max-width:760px){.ehp-ben,.ehp-cta{grid-template-columns:1fr}.ehp h4{font-size:22px}}
 @media (max-width:900px){.quick{grid-template-columns:repeat(2,minmax(0,1fr))}.spk{grid-template-columns:90px 1fr}.spk .logos{grid-column:1/-1}.spk img.f{width:90px;height:90px}}
 @media (max-width:700px){h1{font-size:32px}.hero p.lead{font-size:17px}.hero .wrap{padding:28px 16px 40px}.main{grid-template-columns:1fr}.big{padding:20px}.big h2{font-size:24px}.ev{grid-template-columns:1fr}}
 @media (max-width:420px){.quick{grid-template-columns:1fr}}
@@ -562,19 +579,37 @@ footer{color:var(--mute);font-size:14px;padding:28px 0 40px}
   </section>
 
   <section class="ehp" id="hypothecair-planner" aria-labelledby="ehp-t">
-    <div>
-      <p class="kick" style="color:#ffb3b3;margin:0 0 6px">NVHP</p>
-      <h4 id="ehp-t">Ook hypothecair planner worden?</h4>
-      <p>Heb je de leergang Hypothecair Planner afgerond, dan schrijf je je in bij de NVHP. Je mag dan de beschermde titel <b>Erkend Hypothecair Planner (EHP)</b> voeren en wordt onderdeel van een netwerk van professionals.</p>
-      <ol>
-        <li><b>Volg de leergang Hypothecair Planner</b> bij <a href="https://www.dfo-opleidingen.nl/cursus/leergang-hypothecair-planner" target="_blank" rel="noopener">DFO Opleidingen</a>, <a href="https://www.impact.nu/opleiding/leergang-hypothecair-planner" target="_blank" rel="noopener">Impact</a> of <a href="https://lindenhaeghe.nl/hypotheken/leergang-hypothecair-planner" target="_blank" rel="noopener">Lindenhaeghe</a></li>
-        <li><b>Schrijf je in bij de NVHP</b> zodra je diploma binnen is</li>
-      </ol>
+    <div class="ehp-main">
+      <p class="kick" style="color:#ffb3b3;margin:0 0 6px">NVHP · Leergang Hypothecair Planner</p>
+      <h4 id="ehp-t">Onderscheid jezelf in een veranderende markt: word Erkend Hypothecair Planner (EHP)</h4>
+      <p>De hypotheekmarkt ontwikkelt zich razendsnel. Waar de focus vroeger lag op het afsluiten van de best passende hypotheek, vraagt de klant van vandaag om meer. Complexe gezinssituaties, veranderende fiscale regels, ondernemerschap en vermogensopbouw vragen om een adviseur die verder kijkt dan alleen de maandlasten. Met de Leergang Hypothecair Planner zet jij de stap van hypotheekadviseur naar integraal financieel partner.</p>
+      <details class="ehp-more">
+        <summary>Lees verder</summary>
+        <h5>Van productgericht naar integraal advies</h5>
+        <p>Als Erkend Hypothecair Planner overzie je het complete financiële speelveld van je klant. Je verbindt de eigen woning naadloos met thema’s als pensioen, fiscaliteit, levensloopplanning en vermogensstructurering. Hierdoor bied je niet alleen diepgaander en toekomstbestendig advies, maar creëer je ook meerwaarde in elke levensfase van je klant. Het resultaat? Een sterkere klantrelatie, hogere klanttevredenheid en een duurzaam verdienmodel voor jouw praktijk.</p>
+        <h5>Sluit je aan bij de top van de markt</h5>
+        <p>Na het afronden van de leergang schrijf je je in bij de Nederlandse Vereniging van Hypothecair Planners (NVHP) en mag je de beschermde titel Erkend Hypothecair Planner (EHP) voeren. Hiermee laat je aan klanten, geldverstrekkers en samenwerkingspartners direct zien dat je behoort tot een exclusieve groep hoogopgeleide professionals die kwaliteit en vakmanschap vooropstellen.</p>
+      </details>
     </div>
-    <div class="side">
-      <b>Wat het lidmaatschap je brengt</b>
-      <ul><li>Toegang tot de jaarlijkse Masterclasses</li><li>De beschermde titel EHP</li><li>Een netwerk van hypothecair planners</li></ul>
-      <a class="btnr" href="https://www.hypothecairplanner.nl/adviseur/lidmaatschap/lid-worden" target="_blank" rel="noopener">Lid worden bij de NVHP →</a>
+    <div class="ehp-ben">
+      <h5 style="margin-top:0">Wat levert het jou concreet op?</h5>
+      <div class="ben"><b>Directe autoriteit</b><span>Met de beschermde EHP-titel onderscheid je je aantoonbaar van de standaard hypotheekadviseur.</span></div>
+      <div class="ben"><b>Breder en diepgaander advies</b><span>Je beheerst complexe casuïstiek rondom fiscaliteit, ondernemers, scheiding en oudedagsvoorzieningen.</span></div>
+      <div class="ben"><b>Sterk vaknetwerk</b><span>Als lid van de NVHP spar je op hoog niveau met vakgenoten, blijf je continu op de hoogte van de nieuwste ontwikkelingen en vergroot je jouw professionele netwerk.</span></div>
+      <div class="ben"><b>Toekomstbestendige praktijk</b><span>Je speelt in op veranderende klantbehoeften en verstevigt je positie als onmisbare financiële vertrouwenspersoon.</span></div>
+    </div>
+    <div class="ehp-cta">
+      <div>
+        <h5 style="margin-top:0">Klaar voor de volgende stap in je carrière?</h5>
+        <p>Blijf niet hangen in standaardadvies, maar ontwikkel je tot dé specialist voor complexe woon- en vermogensvraagstukken. Investeer in je vakmanschap, versterk je marktpositie en groei mee met de toekomst van financieel advies. <b>Schrijf je vandaag nog in voor de Leergang Hypothecair Planner</b> en zet de stap naar de top van jouw vakgebied.</p>
+      </div>
+      <div class="ehp-btns">
+        <span class="lbl">Leergang Hypothecair Planner bij:</span>
+        <a class="btnw" href="https://www.dfo-opleidingen.nl/cursus/leergang-hypothecair-planner" target="_blank" rel="noopener">DFO Opleidingen</a>
+        <a class="btnw" href="https://www.impact.nu/opleiding/leergang-hypothecair-planner" target="_blank" rel="noopener">Impact</a>
+        <a class="btnw" href="https://lindenhaeghe.nl/hypotheken/leergang-hypothecair-planner" target="_blank" rel="noopener">Lindenhaeghe</a>
+        <a class="btnr" href="https://www.hypothecairplanner.nl/adviseur/lidmaatschap/lid-worden" target="_blank" rel="noopener">Al afgerond? Lid worden bij de NVHP →</a>
+      </div>
     </div>
   </section>
 
