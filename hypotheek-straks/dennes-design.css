@@ -1,0 +1,50 @@
+/* Design dennes-roes.nl: navy #17365D, rood #C00000, Calibri. Overschrijft de basisstijl van Hypotheek straks. */
+:root{
+  --primary:#17365D;--primary-l:#24507f;--ink:#17365D;--rood:#C00000;--navy:#17365D;--rule:#17365D;--focus:#C00000;
+  --bg:#eef2f6;--tint:#EAF2F8;--surface:#fff;--text:#222;--text-l:#3b4652;--muted:#5f6670;--line:#D9D9D9;--accent:#2E8B2E
+}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;color-scheme:only light}
+body{font-family:Calibri,Carlito,"Segoe UI",Arial,sans-serif;font-size:17px;background:var(--bg)}
+h1,h2,h3{font-family:Calibri,Carlito,"Segoe UI",Arial,sans-serif;letter-spacing:0}
+h1{font-weight:600;font-size:44px}
+h2{font-weight:700}
+.eyebrow{color:#C00000;letter-spacing:.12em}
+/* kop: navy balk met rode onderrand */
+.site-kop{background:#17365D;border-bottom:4px solid #C00000}
+.logo img{background:#fff;border-radius:8px;padding:4px 8px;height:52px}
+.logo-naam{color:#fff;border-left-color:rgba(255,255,255,.3)}
+.logo-naam small{color:#c9d6e6}
+.site-nav a{color:#d7e3f1}
+.site-nav a:hover{color:#fff}
+.site-nav a[aria-current="page"]{color:#fff;box-shadow:inset 0 -3px 0 #C00000}
+.dr-back{color:#c9d6e6!important;font-size:13px;text-decoration:none;white-space:nowrap;align-self:center}
+.dr-back:hover{color:#fff!important}
+/* paginakop als hero */
+.pagehead{background:#17365D;color:#fff;border-bottom:5px solid #C00000;padding:40px 0 44px}
+.pagehead h1{color:#fff;max-width:28ch!important}
+.pagehead p,.pagehead .sub{color:#d7e3f1!important;font-size:18px}
+.pagehead .eyebrow{color:#ffb3b3}
+.pagehead a{color:#fff}
+.pagehead .crumbs,.pagehead nav{color:#c9d6e6!important}
+.pagehead .crumbs a{color:#fff!important}
+/* vlakken en kaarten */
+section.alt{background:#fff}
+main section:not(.alt){background:var(--bg)}
+.card{border:1px solid var(--line);border-top:4px solid #17365D;border-radius:12px;box-shadow:0 4px 16px rgba(23,54,93,.06)}
+.note{border-radius:10px}
+/* knoppen */
+.btn{background:#C00000;border-color:#C00000;border-radius:8px;font-size:15.5px;font-weight:700}
+.btn:hover{background:#a30000;border-color:#a30000}
+.btn.ghost{background:#fff;color:#17365D!important;border-color:#17365D}
+.btn.ghost:hover{background:var(--tint)}
+/* zekerheidslabels */
+.zeker{border-radius:12px;font-weight:700}
+.zeker.b{background:#17365D}
+.zeker.w{background:#E8741E}
+.zeker.m{box-shadow:inset 0 0 0 1px #17365D}
+/* tabellen */
+th{background:#17365D;color:#fff}
+/* voet */
+.site-voet{background:#17365D;border-top:5px solid #C00000}
+input,select,textarea{border-radius:8px}
+@media (max-width:980px){.logo img{height:40px}.dr-back{display:none}h1{font-size:32px}}
