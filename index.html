@@ -442,19 +442,6 @@ footer{color:var(--mute);font-size:14px;padding:28px 0 40px}
     <p style="font-size:14px;color:var(--mute);margin:6px 0 0">Stand van zaken 18-11-2026. Algemene informatie, geen advies.</p>
   </div>
 
-  <h3 id="delen">Delen via WhatsApp, LinkedIn en social media</h3>
-  <div class="prev">
-    <img src="og-start.jpg" alt="Voorbeeld van de deelafbeelding: Hypotheek vanaf 52, presentatie en adviseurstoolkit" width="1200" height="630" loading="lazy">
-    <div><p style="margin:0 0 8px"><b>Deze afbeelding en tekst verschijnen automatisch</b> als je de link deelt in WhatsApp, LinkedIn, Facebook, X, Teams of Slack.</p><p style="margin:0 0 12px;color:var(--mute);font-size:15px">Presentatie en toolkit hebben elk een eigen afbeelding. Kies hieronder een kant-en-klare tekst.</p>
-    <div class="btns"><button class="btn" id="nativeShare" type="button" hidden>Delen…</button><button class="btn alt" data-copy="url" type="button">Kopieer link</button></div></div>
-  </div>
-  <div class="share">
-    <div class="sh"><h4>💬 WhatsApp</h4><pre id="t_wa"></pre><div class="btns"><a class="btn wa" id="b_wa" target="_blank" rel="noopener">Deel via WhatsApp</a><button class="btn alt" data-copy="t_wa" type="button">Kopieer tekst</button></div></div>
-    <div class="sh"><h4>💼 LinkedIn</h4><pre id="t_li"></pre><div class="btns"><a class="btn li" id="b_li" target="_blank" rel="noopener">Deel op LinkedIn</a><button class="btn alt" data-copy="t_li" type="button">Kopieer tekst</button></div><p style="font-size:13.5px;color:var(--mute);margin:8px 0 0">Tip: LinkedIn neemt alleen de link over. Kopieer eerst de tekst en plak die in je bericht.</p></div>
-    <div class="sh"><h4>✉️ E-mail</h4><pre id="t_mail"></pre><div class="btns"><a class="btn" id="b_mail">Open in e-mail</a><button class="btn alt" data-copy="t_mail" type="button">Kopieer tekst</button></div></div>
-    <div class="sh"><h4>📣 X, Facebook en andere</h4><pre id="t_x"></pre><div class="btns"><a class="btn" id="b_x" target="_blank" rel="noopener">Deel op X</a><a class="btn alt" id="b_fb" target="_blank" rel="noopener">Deel op Facebook</a><button class="btn alt" data-copy="t_x" type="button">Kopieer tekst</button></div></div>
-  </div>
-
   <h3>Achtergrond</h3>
   <div class="quick">
     <a class="q" href="https://www.hypothecairplanner.nl/themas/ecb-beleid-hypotheken" target="_blank" rel="noopener"><b>ECB-beleid hypotheken</b><span>hypothecairplanner.nl</span></a>
@@ -468,31 +455,6 @@ footer{color:var(--mute);font-size:14px;padding:28px 0 40px}
 <script>
 /* oude links naar dia's (…/#8) doorsturen naar de presentatie */
 (function(){var m=/^#(\d+)$/.exec(location.hash);if(m)location.replace('presentatie.html'+location.hash);})();
-</script>
-<script>
-(function(){
-  var U='https://dennes-roes.nl/';
-  var T={
-    wa:'Hypotheek vanaf 52: een aantal banken kijkt eerder naar het pensioen 👀\n\nDe presentatie van Dennes Roes (informatieronde november 2026, organisatie DFO BV) en een adviseurstoolkit (gratis voor bezoekers van de informatieavonden) staan online: LinkedIn-posts, hypotheekscan, klanttekst en nieuwsbrief, met je eigen logo.\n\n👉 '+U,
-    li:'Vanaf maart 2027 telt bij Rabobank en Obvion het pensioen al 15 jaar vóór de AOW-leeftijd mee: bij AOW op 67 vanaf 52 in plaats van 57. Voor advieskantoren betekent dat: nu de portefeuille in beeld brengen, te beginnen bij klanten van 50 tot en met 57 jaar.\n\nTijdens de informatieronde acceptatievoorwaarden hypotheken (organisatie DFO BV) laat Dennes Roes zien hoe je dat op kantoor organiseert: welke klanten benader je, in welke volgorde, wie doet wat en hoe leg je het vast.\n\nDe presentatie en een adviseurstoolkit staan online. In de toolkit vind je een LinkedIn-campagne, een hypotheekscan, een klanttekst en een nieuwsbrief, met je eigen logo en gegevens:\n'+U+'\n\n#hypotheekadvies #hypotheek #pensioen #nazorg',
-    mail:'Onderwerp: Hypotheek vanaf 52: presentatie en adviseurstoolkit\n\nHoi,\n\nEen aantal geldverstrekkers houdt eerder rekening met het pensioeninkomen: Rabobank en Obvion vanaf maart 2027 al 15 jaar vóór de AOW-leeftijd. Voor ons als adviseurs is dit hét moment om klanten van 50 tot en met 57 jaar in beeld te brengen.\n\nDe presentatie van Dennes Roes bij de informatieronde (organisatie DFO BV) en een adviseurstoolkit met LinkedIn-campagne, hypotheekscan, klanttekst en nieuwsbrief, met je eigen logo, staan hier:\n'+U+'\n\nGroet,',
-    x:'Hypotheek vanaf 52: Rabobank en Obvion laten het pensioen vanaf maart 2027 al 15 jaar vóór de AOW-leeftijd meetellen. Presentatie en adviseurstoolkit voor hypotheekadviseurs:'
-  };
-  function $(i){return document.getElementById(i)}
-  $('t_wa').textContent=T.wa;$('t_li').textContent=T.li;$('t_mail').textContent=T.mail;$('t_x').textContent=T.x+' '+U;
-  $('b_wa').href='https://wa.me/?text='+encodeURIComponent(T.wa);
-  $('b_li').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(U);
-  var m=T.mail.split('\n\n');var subj=m.shift().replace('Onderwerp: ','');
-  $('b_mail').href='mailto:?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(m.join('\n\n'));
-  $('b_x').href='https://x.com/intent/post?text='+encodeURIComponent(T.x)+'&url='+encodeURIComponent(U);
-  $('b_fb').href='https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(U);
-  function copy(t,btn){function ok(){var o=btn.textContent;btn.textContent='Gekopieerd ✓';setTimeout(function(){btn.textContent=o},1500)}
-    function fb(){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){alert('Kopiëren lukte niet; selecteer de tekst handmatig.')}a.remove()}
-    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,fb);else fb();}
-  document.querySelectorAll('[data-copy]').forEach(function(b){b.onclick=function(){var k=b.dataset.copy;copy(k==='url'?U:$(k).textContent,b)}});
-  var ns=$('nativeShare');
-  if(navigator.share){ns.hidden=false;ns.onclick=function(){navigator.share({title:'Hypotheek vanaf 52',text:'Presentatie en adviseurstoolkit voor hypotheekadviseurs',url:U}).catch(function(){})}}
-})();
 </script>
 <script>
 (function(){
