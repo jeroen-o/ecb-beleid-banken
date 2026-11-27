@@ -17,6 +17,7 @@ Kernfeiten:
 - [Presentatie "Je grootste klantgroep denkt na"](https://dennes-roes.nl/presentatie.html): de 55-plusser, zijn woonwensen en jouw kantoor; 25 dia's (ook als PowerPoint en PDF)
 - [Eerdere presentatie bedrijfsvoering](https://dennes-roes.nl/presentatie-bedrijfsvoering.html): bedrijfsvoering in 7 vragen, doelgroep in cijfers, Europa, tooling
 - [Adviseurstoolkit](https://dennes-roes.nl/adviseurstoolkit.html): LinkedIn-campagne, hypotheekscan 55+, klanttekst, nieuwsbrief, Woontoekomst-check, werkgeversverklaring NHG 2027 met kantoorkop (werkgeversverklaring.nl). Gratis voor bezoekers van de informatieavonden (24–26 november 2026), anders eenmalig € 24,95 excl. btw; afgeschermd met wachtwoord (opvragen via info@dfobv.nl)
+- [Woontoekomst-check](https://dennes-roes.nl/woontoekomst-check.html): vier vragen voor huiseigenaren over blijven of gaan (blijven, aanpassen, verhuizen, nog niet weten), met controlestap en toestemming; het antwoord gaat per e-mail naar de eigen adviseur. Voorbeeldversie; adviseurs maken via de toolkit een eigen HTML-versie voor hun website
 - [Hypotheek straks (NVHP-gesprekshulp)](https://dennes-roes.nl/hypotheek-straks/): scenario's, regels, Europa, rekenhulpen
 
 ## Bronnen
