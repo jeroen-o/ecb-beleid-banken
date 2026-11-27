@@ -155,8 +155,48 @@ a.b:hover,button.b:hover{filter:brightness(1.12)}
 @media (max-width:820px){.grid{grid-template-columns:1fr}.post{grid-template-columns:1fr}#art{padding:20px 16px}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Adviseurstoolkit: hypotheek vanaf 52", "description": "LinkedIn-campagne, hypotheekscan, klanttekst en nieuwsbrief voor hypotheekadviseurs, met eigen logo.", "url": "https://dennes-roes.nl/adviseurstoolkit.html", "inLanguage": "nl-NL", "author": {"@type": "Person", "name": "Dennes Roes"}, "isPartOf": {"@type": "WebSite", "name": "Hypotheek vanaf 52", "url": "https://dennes-roes.nl/"}, "dateModified": "2026-11-18", "image": "https://dennes-roes.nl/og-toolkit.jpg", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}}</script>
+<style>
+html.locked body > *:not(#gate){display:none!important}
+#gate{display:none}
+html.locked #gate{display:flex;min-height:100vh;align-items:center;justify-content:center;padding:24px 16px;background:#eef2f6}
+.gate-box{background:#fff;border:1px solid #D9D9D9;border-top:6px solid #C00000;border-radius:14px;box-shadow:0 8px 30px rgba(23,54,93,.15);padding:28px 26px;max-width:420px;width:100%}
+.gate-box h1{color:#17365D;font-size:26px;margin:0 0 6px}
+.gate-box p{color:#5f6670;margin:0 0 16px;font-size:16px}
+.gate-box label{display:block;font-weight:700;color:#17365D;margin-bottom:6px}
+.gate-box input{width:100%;padding:12px 14px;font:17px Calibri,Carlito,Arial,sans-serif;border:1px solid #c9d3df;border-radius:8px}
+.gate-box button{margin-top:14px;width:100%;min-height:48px;background:#C00000;color:#fff;border:0;border-radius:8px;font:700 17px Calibri,Carlito,Arial,sans-serif;cursor:pointer}
+.gate-err{color:#B50000;font-weight:700;margin-top:10px;min-height:20px}
+.gate-box .back{display:inline-block;margin-top:14px;color:#17365D}
+</style>
+<script>(function(){var ok=false;try{ok=sessionStorage.getItem('tk_ok')==='1'}catch(e){}if(!ok)document.documentElement.classList.add('locked')})();</script>
 </head>
 <body>
+<div id="gate" role="dialog" aria-labelledby="gate-t">
+  <form class="gate-box" id="gateForm" autocomplete="off">
+    <h1 id="gate-t">Adviseurstoolkit</h1>
+    <p>Voor deelnemers aan de informatieronde. Vul het wachtwoord in dat je tijdens de presentatie hebt gekregen.</p>
+    <label for="gatePw">Wachtwoord</label>
+    <input type="password" id="gatePw" autocomplete="current-password" required>
+    <button type="submit">Open toolkit</button>
+    <div class="gate-err" id="gateErr" aria-live="polite"></div>
+    <a class="back" href="index.html">← Terug naar de startpagina</a>
+  </form>
+</div>
+<script>
+(function(){
+  var H=['52ba98fda36ee937f7ec92bbd41390bf74148236ae760aea8012b92114a735f2','c2edf36554be72ebfd64f3dbf6687adede70ab785b40380c286f869b58184133'];
+  var f=document.getElementById('gateForm'),pw=document.getElementById('gatePw'),er=document.getElementById('gateErr');
+  if(document.documentElement.classList.contains('locked'))setTimeout(function(){pw.focus()},50);
+  function hex(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return('0'+x.toString(16)).slice(-2)}).join('')}
+  f.addEventListener('submit',function(e){e.preventDefault();var v=pw.value.trim().toLowerCase();
+    if(!(window.crypto&&crypto.subtle)){er.textContent='Je browser ondersteunt deze controle niet. Probeer een andere browser.';return}
+    crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){
+      if(H.indexOf(hex(b))>-1){try{sessionStorage.setItem('tk_ok','1')}catch(x){}document.documentElement.classList.remove('locked');er.textContent='';window.scrollTo(0,0);if(window.__tkRender)window.__tkRender();}
+      else{er.textContent='Onjuist wachtwoord. Probeer het opnieuw.';pw.select()}
+    });
+  });
+})();
+</script>
 <header><div class="hwrap">
   <p style="margin:0 0 4px;font-size:14px"><a href="index.html" style="color:#c9d6e6">← Start</a> · <a href="presentatie.html" style="color:#c9d6e6">Presentatie</a></p>
   <h1>Adviseurstoolkit · hypotheek vanaf 52 jaar</h1>
